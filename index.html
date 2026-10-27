@@ -3,23 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學習歷程首頁</title>
-    <link rel="stylesheet" href="css/myall.css">
+    <title>學習歷程首頁 - 迪士尼米奇篇</title>
+    <!-- 引入 Google Fonts 手寫/卡通風格字體與 Icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ----------------------------------
+           迪士尼 & 米奇主題配色變數
+        ---------------------------------- */
+        :root {
+            --mickey-red: #E62429;       /* 經典米奇紅 */
+            --mickey-yellow: #FFC72C;    /* 米奇鞋子黃 */
+            --mickey-black: #222222;     /* 米奇耳朵黑 */
+            --mickey-white: #FFFFFF;     /* 米奇手套白 */
+            --bg-disney-blue: #0E1E38;  /* 迪士尼夢幻夜空藍 */
+            --card-bg: #FFFFFF;
+        }
+
+        /* 全局基礎設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Fredoka One', sans-serif;
+            background: radial-gradient(circle at top, #1a365d 0%, var(--bg-disney-blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        /* 主容器 */
+        .disney-container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            border: 6px solid var(--mickey-black);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                        0 0 0 10px var(--mickey-red);
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 頂部裝飾：黃色雙鈕釦（米奇褲子特徵） */
+        .disney-container::before,
+        .disney-container::after {
+            content: '';
+            position: absolute;
+            bottom: 12px;
+            width: 24px;
+            height: 36px;
+            background-color: var(--mickey-yellow);
+            border: 3px solid var(--mickey-black);
+            border-radius: 50%;
+        }
+        .disney-container::before { left: 45%; transform: translateX(-50%) rotate(-10deg); }
+        .disney-container::after { right: 45%; transform: translateX(50%) rotate(10deg); }
+
+        /* 標題區塊 */
+        .header-area {
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        /* 米奇頭剪影 Logo */
+        .mickey-logo {
+            width: 70px;
+            height: 70px;
+            background: var(--mickey-black);
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* 米奇左耳朵 */
+        .mickey-logo::before {
+            content: '';
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            background: var(--mickey-black);
+            border-radius: 50%;
+            top: -12px;
+            left: -18px;
+        }
+
+        /* 米奇右耳朵 */
+        .mickey-logo::after {
+            content: '';
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            background: var(--mickey-black);
+            border-radius: 50%;
+            top: -12px;
+            right: -18px;
+        }
+
+        /* 主標題樣式 */
+        .mytitle-01 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--mickey-red);
+            text-shadow: 3px 3px 0px var(--mickey-yellow),
+                         5px 5px 0px var(--mickey-black);
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* 列表容器 */
+        ul.learning-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* 列表單項 */
+        ul.learning-list li {
+            position: relative;
+        }
+
+        /* 超連結按鈕樣式 */
+        ul.learning-list li a {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background-color: #F9F9F9;
+            color: var(--mickey-black);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: 3px solid var(--mickey-black);
+            border-radius: 18px;
+            box-shadow: 4px 4px 0px var(--mickey-black);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* 清單前綴小魔棒/星星圖示 */
+        ul.learning-list li a::before {
+            content: '✨';
+            margin-right: 12px;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+
+        /* 滑鼠懸停效果 (Hover) */
+        ul.learning-list li a:hover {
+            background-color: var(--mickey-yellow);
+            color: var(--mickey-black);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 6px 6px 0px var(--mickey-red);
+        }
+
+        ul.learning-list li a:hover::before {
+            content: '🏰';
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        /* 點擊效果 (Active) */
+        ul.learning-list li a:active {
+            transform: translateY(1px);
+            box-shadow: 2px 2px 0px var(--mickey-black);
+        }
+
+        /* 響應式微調 (手機版) */
+        @media (max-width: 600px) {
+            .disney-container {
+                padding: 30px 18px;
+                border-width: 4px;
+            }
+            .mytitle-01 {
+                font-size: 1.6rem;
+            }
+            ul.learning-list li a {
+                font-size: 0.95rem;
+                padding: 12px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="mytitle-01">學習歷程筆記展示</div>
-    <ul>
-        <li><a href="./20260923-ex01-ai01.html" target="_blank">HTML and CSS 排版練習(20260923)</a></li>
-        <li><a href="./20260630-JavaScript-travelfood-ai01.html" target="_blank">JS語法練習 - 使用opendata travelfood(20260930)</a></li>
-        <li><a href="./20261006-ch6.html" target="_blank">ch6 Bootstrap 切版</a></li>
-        <li><a href="./20261006-ch6-切版練習ex01.html" target="_blank">ch6 Bootstrap 切版練習01</a></li>
-        <li><a href="./20261008-ch6-切版練習ex02.html" target="_blank">ch6 Bootstrap 切版練習02</a></li>
-        <li><a href="./20261008-ch7-flex.html" target="_blank">ch7 flex</a></li>
-        <li><a href="./20261013-ch7-flex-ex01.html" target="_blank">ch7 flex - 個人履歷排版練習</a></li>
-        <li><a href="./20261015-ch8-forms.html" target="_blank">ch8 form 表單</a></li>
-        <li><a href="./20261015-ch8-forms-EX01.html" target="_blank">ch8 form - 表單排版練習</a></li>
-        <li><a href="./20261027-ch8-forms-EX01-AI01.html" target="_blank">ch8 form - 表單排版練習AI</a></li>
-    </ul>
+
+    <div class="disney-container">
+        <!-- 米奇頭像標誌區 -->
+        <div class="header-area">
+            <div class="mickey-logo"></div>
+            <div class="mytitle-01">學習歷程筆記展示</div>
+            <p class="subtitle">✨ Welcome to My Coding Journey ✨</p>
+        </div>
+
+        <!-- 學習歷程連結列表 -->
+        <ul class="learning-list">
+            <li><a href="./20260923-ex01-ai01.html" target="_blank">HTML and CSS 排版練習 (20260923)</a></li>
+            <li><a href="./20260630-JavaScript-travelfood-ai01.html" target="_blank">JS語法練習 - 使用opendata travelfood (20260930)</a></li>
+            <li><a href="./20261006-ch6.html" target="_blank">ch6 Bootstrap 切版</a></li>
+            <li><a href="./20261006-ch6-切版練習ex01.html" target="_blank">ch6 Bootstrap 切版練習01</a></li>
+            <li><a href="./20261008-ch6-切版練習ex02.html" target="_blank">ch6 Bootstrap 切版練習02</a></li>
+            <li><a href="./20261008-ch7-flex.html" target="_blank">ch7 flex</a></li>
+            <li><a href="./20261013-ch7-flex-ex01.html" target="_blank">ch7 flex - 個人履歷排版練習</a></li>
+            <li><a href="./20261015-ch8-forms.html" target="_blank">ch8 form 表單</a></li>
+            <li><a href="./20261015-ch8-forms-EX01.html" target="_blank">ch8 form - 表單排版練習</a></li>
+            <li><a href="./20261027-ch8-forms-EX01-AI01.html" target="_blank">ch8 form - 表單排版練習AI</a></li>
+        </ul>
+    </div>
+
+    <!-- 載入 jQuery -->
     <script src="js/jquery-4.0.0.js"></script>
 </body>
 </html>
