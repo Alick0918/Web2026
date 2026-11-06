@@ -376,3 +376,34 @@ body.astra-site {
     opacity: 1;
     animation: fadeInUp 1s ease both;
 }
+
+/* 返回最上方按鈕顯示狀態 */
+#backToTopBtn.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+#backToTopBtn:hover {
+    transform: translateY(-3px);
+}
+
+/* s02 社群 icon hover 互動效果 */
+#s02 .fa-brands {
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+#s02 .fa-brands:hover {
+    transform: translateY(-3px);
+}
+
+#s02 .fa-square-facebook:hover {
+    color: #3b5998 !important; /* Facebook 藍 */
+}
+
+#s02 .fa-instagram:hover {
+    color: #e1306c !important; /* Instagram 紅粉 */
+}
+
+#s02 .fa-line:hover {
+    color: #00b900 !important; /* Line 綠 */
+}
