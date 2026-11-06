@@ -1,236 +1,1383 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>學習歷程首頁 - 迪士尼米奇篇</title>
-    <!-- 引入 Google Fonts 手寫/卡通風格字體與 Icon -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* ----------------------------------
-           迪士尼 & 米奇主題配色變數
-        ---------------------------------- */
-        :root {
-            --mickey-red: #E62429;       /* 經典米奇紅 */
-            --mickey-yellow: #FFC72C;    /* 米奇鞋子黃 */
-            --mickey-black: #222222;     /* 米奇耳朵黑 */
-            --mickey-white: #FFFFFF;     /* 米奇手套白 */
-            --bg-disney-blue: #0E1E38;  /* 迪士尼夢幻夜空藍 */
-            --card-bg: #FFFFFF;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101a32">
+  <title>Welcome To My Journey｜Disney Learning Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --mickey-red: #e62429;
+      --mickey-yellow: #ffc72c;
+      --mickey-black: #202126;
+      --pluto-orange: #f28c28;
+      --pluto-green: #45a66b;
+      --magic-blue: #101a32;
+      --magic-blue-2: #1b2b4b;
+      --magic-purple: #9274c8;
+      --magic-gold: #f8d978;
+      --cream: #fff9ed;
+      --ink: #25283a;
+      --muted: #74788a;
+      --white: #fff;
+      --shadow: 0 18px 45px rgba(9, 16, 34, .16);
+    }
 
-        /* 全局基礎設定 */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: 'Noto Sans TC', 'Fredoka One', sans-serif;
-            background: radial-gradient(circle at top, #1a365d 0%, var(--bg-disney-blue) 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            color: #333;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* 主容器 */
-        .disney-container {
-            width: 100%;
-            max-width: 800px;
-            background: var(--card-bg);
-            border: 6px solid var(--mickey-black);
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
-                        0 0 0 10px var(--mickey-red);
-            padding: 40px 30px;
-            position: relative;
-            overflow: hidden;
-        }
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      color: var(--ink);
+      background: var(--magic-blue);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
-        /* 頂部裝飾：黃色雙鈕釦（米奇褲子特徵） */
-        .disney-container::before,
-        .disney-container::after {
-            content: '';
-            position: absolute;
-            bottom: 12px;
-            width: 24px;
-            height: 36px;
-            background-color: var(--mickey-yellow);
-            border: 3px solid var(--mickey-black);
-            border-radius: 50%;
-        }
-        .disney-container::before { left: 45%; transform: translateX(-50%) rotate(-10deg); }
-        .disney-container::after { right: 45%; transform: translateX(50%) rotate(10deg); }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        /* 標題區塊 */
-        .header-area {
-            text-align: center;
-            margin-bottom: 35px;
-            position: relative;
-        }
+    button,
+    input {
+      font: inherit;
+    }
 
-        /* 米奇頭剪影 Logo */
-        .mickey-logo {
-            width: 70px;
-            height: 70px;
-            background: var(--mickey-black);
-            border-radius: 50%;
-            margin: 0 auto 15px auto;
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
+    .site-shell {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
 
-        /* 米奇左耳朵 */
-        .mickey-logo::before {
-            content: '';
-            position: absolute;
-            width: 42px;
-            height: 42px;
-            background: var(--mickey-black);
-            border-radius: 50%;
-            top: -12px;
-            left: -18px;
-        }
+    /* 星空背景 */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(146, 116, 200, .23), transparent 24%),
+        radial-gradient(circle at 88% 12%, rgba(248, 217, 120, .13), transparent 20%),
+        radial-gradient(circle at 50% 90%, rgba(69, 166, 107, .12), transparent 30%),
+        linear-gradient(145deg, #101a32, #172746 58%, #101a32);
+    }
 
-        /* 米奇右耳朵 */
-        .mickey-logo::after {
-            content: '';
-            position: absolute;
-            width: 42px;
-            height: 42px;
-            background: var(--mickey-black);
-            border-radius: 50%;
-            top: -12px;
-            right: -18px;
-        }
+    .page-bg::before,
+    .page-bg::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 50%;
+      animation: orbit 32s linear infinite;
+    }
 
-        /* 主標題樣式 */
-        .mytitle-01 {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--mickey-red);
-            text-shadow: 3px 3px 0px var(--mickey-yellow),
-                         5px 5px 0px var(--mickey-black);
-            letter-spacing: 2px;
-            margin-top: 10px;
-        }
+    .page-bg::before {
+      top: 8%;
+      left: -230px;
+    }
 
-        .subtitle {
-            font-size: 0.95rem;
-            color: #666;
-            margin-top: 8px;
-            font-weight: 500;
-        }
+    .page-bg::after {
+      right: -250px;
+      bottom: 4%;
+      width: 520px;
+      height: 520px;
+      animation-direction: reverse;
+    }
 
-        /* 列表容器 */
-        ul.learning-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
+    @keyframes orbit {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
-        /* 列表單項 */
-        ul.learning-list li {
-            position: relative;
-        }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 0;
+      color: var(--white);
+    }
 
-        /* 超連結按鈕樣式 */
-        ul.learning-list li a {
-            display: flex;
-            align-items: center;
-            padding: 16px 20px;
-            background-color: #F9F9F9;
-            color: var(--mickey-black);
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 700;
-            border: 3px solid var(--mickey-black);
-            border-radius: 18px;
-            box-shadow: 4px 4px 0px var(--mickey-black);
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Fredoka, "Noto Sans TC", sans-serif;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
 
-        /* 清單前綴小魔棒/星星圖示 */
-        ul.learning-list li a::before {
-            content: '✨';
-            margin-right: 12px;
-            font-size: 1.2rem;
-            transition: transform 0.2s;
-        }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: var(--mickey-yellow);
+      background: var(--mickey-red);
+      border: 2px solid rgba(255, 255, 255, .8);
+      border-radius: 14px;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, .2);
+      font-size: 20px;
+    }
 
-        /* 滑鼠懸停效果 (Hover) */
-        ul.learning-list li a:hover {
-            background-color: var(--mickey-yellow);
-            color: var(--mickey-black);
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 6px 6px 0px var(--mickey-red);
-        }
+    .brand small {
+      display: block;
+      color: #bfc9df;
+      font: 500 10px Fredoka, sans-serif;
+      letter-spacing: 2px;
+    }
 
-        ul.learning-list li a:hover::before {
-            content: '🏰';
-            transform: rotate(15deg) scale(1.2);
-        }
+    .top-nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: #e8edf8;
+      font-size: 13px;
+    }
 
-        /* 點擊效果 (Active) */
-        ul.learning-list li a:active {
-            transform: translateY(1px);
-            box-shadow: 2px 2px 0px var(--mickey-black);
-        }
+    .top-nav a {
+      transition: color .2s;
+    }
 
-        /* 響應式微調 (手機版) */
-        @media (max-width: 600px) {
-            .disney-container {
-                padding: 30px 18px;
-                border-width: 4px;
-            }
-            .mytitle-01 {
-                font-size: 1.6rem;
-            }
-            ul.learning-list li a {
-                font-size: 0.95rem;
-                padding: 12px 15px;
-            }
-        }
-    </style>
+    .top-nav a:hover {
+      color: var(--magic-gold);
+    }
+
+    .nav-cta {
+      padding: 9px 16px;
+      color: var(--magic-blue) !important;
+      background: var(--magic-gold);
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 32px;
+      min-height: 430px;
+      padding: 46px 54px;
+      margin: 20px 0 34px;
+      overflow: hidden;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(248, 217, 120, .2), transparent 27%),
+        linear-gradient(120deg, rgba(35, 53, 87, .98), rgba(22, 34, 62, .96));
+      box-shadow: 0 25px 70px rgba(0, 0, 0, .25);
+    }
+
+    .hero::before {
+      content: "✦";
+      position: absolute;
+      top: 26px;
+      right: 38%;
+      color: var(--magic-gold);
+      font-size: 28px;
+      opacity: .8;
+      animation: twinkle 2.5s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: "✧";
+      position: absolute;
+      right: 45%;
+      bottom: 42px;
+      color: #fff;
+      font-size: 38px;
+      opacity: .65;
+      animation: twinkle 3s ease-in-out infinite reverse;
+    }
+
+    @keyframes twinkle {
+      50% {
+        opacity: .25;
+        transform: scale(.8) rotate(25deg);
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      margin-bottom: 18px;
+      color: var(--magic-gold);
+      background: rgba(248, 217, 120, .1);
+      border: 1px solid rgba(248, 217, 120, .35);
+      border-radius: 999px;
+      font: 600 11px Fredoka, sans-serif;
+      letter-spacing: 1.6px;
+    }
+
+    .hero h1 {
+      margin-bottom: 12px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--mickey-yellow);
+      text-shadow: 3px 4px 0 rgba(230, 36, 41, .65);
+    }
+
+    .hero-copy {
+      max-width: 520px;
+      margin-bottom: 25px;
+      color: #d3dced;
+      font-size: 15px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 19px;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      color: #251b0b;
+      background: var(--mickey-yellow);
+      box-shadow: 0 6px 0 #c28d17;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 9px 0 #c28d17;
+    }
+
+    .btn-ghost {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, .35);
+      background: rgba(255, 255, 255, .07);
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 275px;
+      display: grid;
+      place-items: center;
+    }
+
+    .castle-glow {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(248, 217, 120, .27), rgba(146, 116, 200, .1) 48%, transparent 70%);
+      filter: blur(3px);
+    }
+
+    .castle-icon {
+      position: relative;
+      z-index: 1;
+      color: var(--magic-gold);
+      font-size: clamp(115px, 17vw, 190px);
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .3));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 55px;
+      height: 55px;
+      border: 3px solid rgba(255, 255, 255, .85);
+      border-radius: 18px;
+      box-shadow: 0 9px 20px rgba(0, 0, 0, .2);
+      font-size: 22px;
+    }
+
+    .orbit-mickey {
+      top: 28px;
+      left: 16%;
+      color: white;
+      background: var(--mickey-red);
+      transform: rotate(-12deg);
+    }
+
+    .orbit-pluto {
+      right: 12%;
+      bottom: 30px;
+      color: #26331e;
+      background: #f5bd54;
+      transform: rotate(10deg);
+    }
+
+    @keyframes float {
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    /* 統計 */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 70px;
+    }
+
+    .stat-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      color: white;
+      background: rgba(255, 255, 255, .075);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      color: var(--magic-blue);
+      background: var(--magic-gold);
+      font-size: 18px;
+    }
+
+    .stat-card:nth-child(2) .stat-icon {
+      background: #ff9b55;
+    }
+
+    .stat-card:nth-child(3) .stat-icon {
+      background: #8ed3a2;
+    }
+
+    .stat-number {
+      display: block;
+      font: 700 25px Fredoka, sans-serif;
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      color: #bdc9df;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* 作品區 */
+    .works-section {
+      padding: 48px clamp(18px, 4vw, 48px) 54px;
+      margin: 0 0 46px;
+      background: var(--cream);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      color: var(--mickey-red);
+      font: 700 11px Fredoka, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      margin-top: 4px;
+      color: var(--mickey-black);
+      font-size: clamp(25px, 4vw, 34px);
+      font-weight: 900;
+    }
+
+    .section-heading p {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .record-count {
+      padding: 7px 12px;
+      color: #73531a;
+      background: #ffedbd;
+      border-radius: 999px;
+      white-space: nowrap;
+      font: 700 11px Fredoka, sans-serif;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 8px 14px;
+      color: #5f6372;
+      background: white;
+      border: 1px solid #e8e3d9;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--mickey-red);
+      color: var(--mickey-red);
+    }
+
+    .filter-btn.active {
+      color: white;
+      background: var(--mickey-red);
+      border-color: var(--mickey-red);
+      box-shadow: 0 4px 10px rgba(230, 36, 41, .2);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 190px;
+      padding: 9px 13px;
+      color: #9295a0;
+      background: white;
+      border: 1px solid #e8e3d9;
+      border-radius: 999px;
+    }
+
+    .search-box input {
+      width: 100%;
+      min-width: 0;
+      color: var(--ink);
+      background: transparent;
+      border: 0;
+      outline: 0;
+      font-size: 12px;
+    }
+
+    .search-box input::placeholder {
+      color: #a2a4ad;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .work-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 225px;
+      padding: 19px;
+      overflow: hidden;
+      background: white;
+      border: 1px solid #eee9df;
+      border-radius: 19px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      animation: cardIn .35s ease both;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .work-card::after {
+      content: "";
+      position: absolute;
+      top: -32px;
+      right: -32px;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      background: var(--card-accent, #ffe3df);
+      opacity: .45;
+      transition: transform .3s;
+    }
+
+    .work-card:hover {
+      z-index: 1;
+      transform: translateY(-6px);
+      border-color: rgba(230, 36, 41, .3);
+      box-shadow: 0 14px 28px rgba(43, 38, 30, .12);
+    }
+
+    .work-card:hover::after {
+      transform: scale(1.5);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 17px;
+    }
+
+    .work-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      color: var(--card-color, var(--mickey-red));
+      background: var(--card-accent, #ffe3df);
+      border-radius: 14px;
+      font-size: 18px;
+    }
+
+    .work-number {
+      color: #a6a6ae;
+      font: 600 11px Fredoka, sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .work-card h3 {
+      margin-bottom: 7px;
+      color: #272938;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .work-card p {
+      flex: 1;
+      margin-bottom: 15px;
+      color: #858795;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 5px 9px;
+      color: var(--card-color, #a33);
+      background: var(--card-accent, #ffe3df);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #424658;
+      font-size: 11px;
+      font-weight: 800;
+      transition: color .2s;
+    }
+
+    .work-link:hover {
+      color: var(--mickey-red);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 45px 15px;
+      color: #858795;
+      text-align: center;
+    }
+
+    .empty-state i {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--magic-purple);
+      font-size: 30px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 0 0 34px;
+      color: #aebbd2;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .footer-magic {
+      margin-bottom: 8px;
+      color: var(--magic-gold);
+      font-size: 18px;
+      letter-spacing: 8px;
+    }
+
+    .footer-brand {
+      color: white;
+      font: 600 13px Fredoka, sans-serif;
+      letter-spacing: 1px;
+    }
+
+
+    /* 入場禮物盒動畫 */
+    .intro-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(146, 116, 200, .24), transparent 32%),
+        radial-gradient(circle at 20% 15%, rgba(248, 217, 120, .12), transparent 25%),
+        linear-gradient(145deg, #101a32, #1b2b4b 58%, #101a32);
+      transition: opacity .55s ease, visibility .55s ease;
+    }
+
+    .intro-screen.is-leaving {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .intro-kicker {
+      margin-bottom: 8px;
+      color: var(--magic-gold);
+      font: 600 10px Fredoka, sans-serif;
+      letter-spacing: 3px;
+    }
+
+    .intro-title {
+      margin-bottom: 12px;
+      font: 700 clamp(27px, 5vw, 43px) Fredoka, "Noto Sans TC", sans-serif;
+      letter-spacing: .3px;
+    }
+
+    .intro-title span {
+      display: block;
+      color: var(--mickey-yellow);
+      text-shadow: 2px 3px 0 rgba(230, 36, 41, .6);
+    }
+
+    .gift-button {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      margin: 4px 0 8px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gift-glow {
+      position: absolute;
+      inset: 12px;
+      border-radius: 50%;
+      background: rgba(248, 217, 120, .13);
+      filter: blur(15px);
+      animation: giftGlow 1.8s ease-in-out infinite;
+    }
+
+    .gift-box {
+      position: absolute;
+      left: 31px;
+      bottom: 24px;
+      width: 108px;
+      height: 82px;
+      overflow: hidden;
+      border: 3px solid #8e171d;
+      border-radius: 9px 9px 13px 13px;
+      background: linear-gradient(135deg, #f13a40, #c91e2a);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, .28);
+    }
+
+    .gift-ribbon {
+      position: absolute;
+      left: 43px;
+      top: 0;
+      width: 20px;
+      height: 100%;
+      background: var(--mickey-yellow);
+      box-shadow: 0 0 0 1px rgba(137, 94, 9, .15);
+    }
+
+    .gift-lid {
+      position: absolute;
+      z-index: 2;
+      left: 25px;
+      bottom: 99px;
+      width: 120px;
+      height: 25px;
+      border: 3px solid #8e171d;
+      border-radius: 7px;
+      background: linear-gradient(180deg, #ff5a5f, #e62429);
+      transform-origin: 12px 22px;
+      transition: transform .55s cubic-bezier(.2, .8, .2, 1);
+      box-shadow: 0 5px 9px rgba(0, 0, 0, .18);
+    }
+
+    .gift-lid::after {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 49px;
+      width: 18px;
+      height: 15px;
+      border: 5px solid var(--mickey-yellow);
+      border-radius: 15px 15px 4px 15px;
+      transform: rotate(-24deg);
+    }
+
+    .gift-bow {
+      position: absolute;
+      z-index: 3;
+      left: 73px;
+      bottom: 116px;
+      width: 26px;
+      height: 18px;
+      border: 5px solid var(--mickey-yellow);
+      border-radius: 50% 50% 4px 50%;
+      transform: rotate(25deg);
+      transition: transform .55s ease, opacity .35s ease;
+    }
+
+    .gift-spark {
+      position: absolute;
+      color: var(--magic-gold);
+      opacity: 0;
+      font-size: 25px;
+    }
+
+    .gift-spark-a {
+      top: 9px;
+      left: 18px;
+    }
+
+    .gift-spark-b {
+      top: 25px;
+      right: 14px;
+      font-size: 32px;
+    }
+
+    .gift-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .gift-button:focus-visible {
+      outline: 2px solid var(--magic-gold);
+      outline-offset: 5px;
+      border-radius: 18px;
+    }
+
+    .intro-hint {
+      margin: 4px 0 14px;
+      color: #c8d2e5;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .intro-progress {
+      width: min(250px, 65vw);
+      height: 6px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .17);
+    }
+
+    .intro-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--mickey-red), var(--mickey-yellow));
+      box-shadow: 0 0 12px rgba(255, 199, 44, .5);
+      animation: introLoading 2s linear forwards;
+    }
+
+    .intro-skip {
+      margin-top: 13px;
+      padding: 5px 10px;
+      color: #d5dced;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 11px;
+      opacity: .75;
+    }
+
+    .intro-skip:hover {
+      color: var(--magic-gold);
+      opacity: 1;
+    }
+
+    .intro-screen.is-opening .gift-lid {
+      transform: translate(-13px, -28px) rotate(-32deg);
+    }
+
+    .intro-screen.is-opening .gift-bow {
+      transform: translate(-14px, -30px) rotate(-30deg);
+      opacity: 0;
+    }
+
+    .intro-screen.is-opening .gift-spark {
+      animation: sparkPop .65s ease-out forwards;
+    }
+
+    .intro-screen.is-opening .gift-spark-b {
+      animation-delay: .08s;
+    }
+
+    .intro-screen.is-opening .gift-glow {
+      animation: giftBurst .65s ease-out forwards;
+    }
+
+    @keyframes introLoading {
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes giftGlow {
+      50% {
+        transform: scale(1.12);
+        opacity: .7;
+      }
+    }
+
+    @keyframes giftBurst {
+      to {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    @keyframes sparkPop {
+      0% {
+        opacity: 0;
+        transform: scale(.3);
+      }
+
+      45% {
+        opacity: 1;
+        transform: scale(1.35) rotate(25deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-35px) scale(.7);
+      }
+    }
+
+    /* 輕量互動：回到頂端 */
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 20;
+      width: 44px;
+      height: 44px;
+      color: var(--magic-blue);
+      background: var(--magic-gold);
+      border: 0;
+      border-radius: 15px;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, .22);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: .25s ease;
+    }
+
+    .back-to-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      color: white;
+      background: var(--mickey-red);
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr .7fr;
+        padding: 38px 34px;
+      }
+
+      .works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .site-shell {
+        width: min(100% - 22px, 520px);
+      }
+
+      .topbar {
+        padding: 17px 0;
+      }
+
+      .top-nav {
+        gap: 13px;
+        font-size: 11px;
+      }
+
+      .top-nav a:not(.nav-cta) {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        min-height: 0;
+        padding: 32px 24px 20px;
+        margin-top: 10px;
+        border-radius: 23px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero-copy {
+        font-size: 13px;
+      }
+
+      .hero-art {
+        min-height: 190px;
+      }
+
+      .castle-icon {
+        font-size: 130px;
+      }
+
+      .castle-glow {
+        width: 200px;
+        height: 200px;
+      }
+
+      .orbit-mickey {
+        top: 8px;
+        left: 18%;
+      }
+
+      .orbit-pluto {
+        right: 15%;
+        bottom: 12px;
+      }
+
+      .stats {
+        gap: 8px;
+        margin-bottom: 45px;
+      }
+
+      .stat-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 14px;
+      }
+
+      .stat-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
+      }
+
+      .stat-number {
+        font-size: 21px;
+      }
+
+      .stat-label {
+        font-size: 9px;
+      }
+
+      .works-section {
+        padding: 30px 16px 34px;
+        margin-bottom: 30px;
+        border-radius: 22px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .works-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .work-card {
+        min-height: 195px;
+      }
+
+      .filters {
+        gap: 6px;
+      }
+
+      .filter-btn {
+        padding: 7px 10px;
+        font-size: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
-<body>
 
-    <div class="disney-container">
-        <!-- 米奇頭像標誌區 -->
-        <div class="header-area">
-            <div class="mickey-logo"></div>
-            <div class="mytitle-01">學習歷程筆記展示</div>
-            <p class="subtitle">✨ Welcome to My Coding Journey ✨</p>
+<body>
+  <!-- 入場動畫：禮物盒開啟 -->
+  <div class="intro-screen" id="introScreen" aria-label="Welcome To My Journey">
+    <div class="intro-content">
+      <div class="intro-sparkle sparkle-one">✦</div>
+      <div class="intro-sparkle sparkle-two">✧</div>
+      <p class="intro-kicker">A LITTLE MAGIC IS WAITING</p>
+      <h1 class="intro-title">Welcome To <span>My Journey</span></h1>
+      <button class="gift-button" id="giftButton" type="button" aria-label="開啟禮物並進入網站">
+        <span class="gift-glow"></span>
+        <span class="gift-lid"></span>
+        <span class="gift-bow"></span>
+        <span class="gift-box">
+          <span class="gift-ribbon"></span>
+        </span>
+        <span class="gift-spark gift-spark-a">✦</span>
+        <span class="gift-spark gift-spark-b">✧</span>
+      </button>
+      <p class="intro-hint">正在為你準備一份小小驚喜⋯</p>
+      <div class="intro-progress"><span id="introProgress"></span></div>
+      <button class="intro-skip" id="introSkip" type="button">提前開啟 <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#">
+        <span class="brand-mark"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <span>MY DISNEY JOURNEY<small>LEARN · CREATE · GROW</small></span>
+      </a>
+      <nav class="top-nav" aria-label="主要導覽">
+        <a href="#home">首頁</a>
+        <a href="#works">作品圖鑑</a>
+        <a class="nav-cta" href="#works">開始探索 <i class="fa-solid fa-arrow-right"></i></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <div class="eyebrow"><i class="fa-solid fa-star"></i> WELCOME TO MY MAGIC WORLD</div>
+          <h1>每一次練習，<br>都是一場<span class="highlight">奇妙冒險</span></h1>
+          <p class="hero-copy">歡迎來到我的學習歷程！從 HTML、CSS 到 JavaScript 與 Bootstrap，收藏每一次嘗試、每一份作品，持續解鎖新的網頁設計技能。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#works"><i class="fa-solid fa-play"></i> 開始探索作品</a>
+            <a class="btn btn-ghost" href="#works"><i class="fa-solid fa-book-open"></i> 查看學習圖鑑</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="魔法城堡裝飾">
+          <div class="castle-glow"></div>
+          <div class="orbit-dot orbit-mickey" title="Mickey"><i class="fa-solid fa-circle"></i></div>
+          <i class="fa-solid fa-chess-rook castle-icon"></i>
+          <div class="orbit-dot orbit-pluto" title="Pluto"><i class="fa-solid fa-paw"></i></div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="學習歷程統計">
+        <div class="stat-card">
+          <span class="stat-icon"><i class="fa-solid fa-folder-open"></i></span>
+          <div><span class="stat-number" id="workCount">15</span><span class="stat-label">作品收藏 WORKS</span></div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon"><i class="fa-solid fa-layer-group"></i></span>
+          <div><span class="stat-number">06</span><span class="stat-label">學習分類 CATEGORIES</span></div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon"><i class="fa-solid fa-star"></i></span>
+          <div><span class="stat-number">∞</span><span class="stat-label">成長可能 INFINITE</span></div>
+        </div>
+      </section>
+
+      <section class="works-section" id="works">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">✦ MAGIC WORKS ARCHIVE</div>
+            <h2>我的作品圖鑑</h2>
+            <p>選擇一個學習任務，開啟你的作品旅程。</p>
+          </div>
+          <span class="record-count"><i class="fa-solid fa-sparkles"></i> <span id="visibleCount">15</span>
+            RECORDS</span>
         </div>
 
-        <!-- 學習歷程連結列表 -->
-        <ul class="learning-list">
-            <li><a href="./20260923-ex01-ai01.html" target="_blank">HTML and CSS 排版練習 (20260923)</a></li>
-            <li><a href="./20260630-JavaScript-travelfood-ai01.html" target="_blank">JS語法練習 - 使用opendata travelfood (20260930)</a></li>
-            <li><a href="./20261001 BS -1.html" target="_blank">Bootstrap練習</a></li>
-            <li><a href="./20261006-ch6.html" target="_blank">ch6 Bootstrap 切版</a></li>
-            <li><a href="./20261006-ch6-切版練習ex01.html" target="_blank">ch6 Bootstrap 切版練習01</a></li>
-            <li><a href="./20261008-ch6-切版練習ex02.html" target="_blank">ch6 Bootstrap 切版練習02</a></li>
-            <li><a href="./20261008-ch7-flex.html" target="_blank">ch7 flex</a></li>
-            <li><a href="./20261013-ch7-flex-ex01.html" target="_blank">ch7 flex - 個人履歷排版練習</a></li>
-            <li><a href="./20261015-ch8-forms.html" target="_blank">ch8 form 表單</a></li>
-            <li><a href="./20261015-ch8-forms-EX01.html" target="_blank">ch8 form - 表單排版練習</a></li>
-            <li><a href="./20261027-ch8-forms-EX01-AI01.html" target="_blank">ch8 form - 表單排版練習AI</a></li>
-            <li><a href="./20261103-wowjs動畫練習.html" target="_blank">wowjs 動畫練習</a></li>
-            <li><a href="./20261027 - SPA 一頁式.html" target="_blank">SPA 一頁式</a></li>
-            <li><a href="./HW - SPA 形象官網設計與動畫應用.html" target="_blank">HW - SPA 一頁式 <a></li>
-            <li><a href="./HW - SPA 形象官網設計與動畫應用_Ai.html" target="_blank">HW - SPA 一頁式 AI<a></li>
-        </ul>
-    </div>
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="作品分類篩選">
+            <button class="filter-btn active" data-filter="all" type="button">全部作品</button>
+            <button class="filter-btn" data-filter="html" type="button">HTML & CSS</button>
+            <button class="filter-btn" data-filter="js" type="button">JavaScript</button>
+            <button class="filter-btn" data-filter="bootstrap" type="button">Bootstrap</button>
+            <button class="filter-btn" data-filter="flex" type="button">Flex</button>
+            <button class="filter-btn" data-filter="forms" type="button">Forms</button>
+            <button class="filter-btn" data-filter="spa" type="button">SPA / 動畫</button>
+          </div>
+          <label class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="searchInput" type="search" placeholder="搜尋作品名稱..." aria-label="搜尋作品名稱">
+          </label>
+        </div>
 
-    <!-- 載入 jQuery -->
-    <script src="js/jquery-4.0.0.js"></script>
+        <div class="works-grid" id="worksGrid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <button class="back-to-top" id="backToTop" type="button" aria-label="回到頁面頂端">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <footer>
+      <div class="footer-magic">✦ ✧ ★ ✧ ✦</div>
+      <div class="footer-brand">MY DISNEY JOURNEY</div>
+      <p>Keep learning, keep creating, and let the magic begin.</p>
+      <p>© My Learning Portfolio</p>
+    </footer>
+  </div>
+
+  <script>
+    // 入場動畫：預設約 2 秒後自動開啟，也可點擊禮物或「提前開啟」略過。
+    const introScreen = document.getElementById("introScreen");
+    const giftButton = document.getElementById("giftButton");
+    const introSkip = document.getElementById("introSkip");
+    let introFinished = false;
+
+    function finishIntro() {
+      if (introFinished) return;
+      introFinished = true;
+      introScreen.classList.add("is-opening");
+      window.setTimeout(() => introScreen.classList.add("is-leaving"), 520);
+      window.setTimeout(() => introScreen.remove(), 1150);
+    }
+
+    const introTimer = window.setTimeout(finishIntro, 2050);
+    [giftButton, introSkip].forEach(element => {
+      element.addEventListener("click", () => {
+        window.clearTimeout(introTimer);
+        finishIntro();
+      });
+    });
+
+    // 回到頂端按鈕：向下捲動一段距離後才顯示。
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("is-visible", window.scrollY > 420);
+    }, { passive: true });
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // 作品資料：保留原始檔名與相對路徑，新增作品時可直接在此陣列加入資料。
+    const works = [
+      { title: "HTML and CSS 排版練習", date: "2026.09.23", category: "html", tag: "HTML & CSS", icon: "fa-code", desc: "練習 HTML 結構與 CSS 基礎排版，建立網頁設計的第一步。", href: "./20260923-ex01-ai01.html" },
+
+      { title: "JS 語法練習－旅遊美食 OpenData", date: "2026.09.30", category: "js", tag: "JavaScript", icon: "fa-map-location-dot", desc: "運用 JavaScript 串接 OpenData，呈現旅遊與美食資訊。", href: "./20260630-JavaScript-travelfood-ai01.html" },
+
+      { title: "Bootstrap 練習", date: "2026", category: "bootstrap", tag: "Bootstrap", icon: "fa-table-columns", desc: "認識 Bootstrap 元件與格線系統，練習快速建立版面。", href: "./20261001 BS -1.html" },
+
+      { title: "Ch6 Bootstrap 切版", date: "2026.10.06", category: "bootstrap", tag: "Bootstrap", icon: "fa-window-maximize", desc: "使用 Bootstrap 格線與元件完成網頁切版。", href: "./20261006-ch6.html" },
+
+      { title: "Ch6 Bootstrap 切版練習 01", date: "2026.10.06", category: "bootstrap", tag: "Bootstrap", icon: "fa-grip", desc: "透過實作熟悉 Bootstrap 欄位配置與響應式排版。", href: "./20261006-ch6-切版練習ex01.html" },
+
+      { title: "Ch6 Bootstrap 切版練習 02", date: "2026.10.08", category: "bootstrap", tag: "Bootstrap", icon: "fa-border-all", desc: "延伸切版練習，調整區塊配置與畫面比例。", href: "./20261008-ch6-切版練習ex02.html" },
+
+      { title: "Ch7 Flex", date: "2026.10.08", category: "flex", tag: "CSS Flex", icon: "fa-arrows-left-right", desc: "運用 Flexbox 控制元素排列、對齊與間距。", href: "./20261008-ch7-flex.html" },
+
+      { title: "Ch7 Flex－個人履歷排版", date: "2026.10.13", category: "flex", tag: "CSS Flex", icon: "fa-id-card", desc: "將 Flexbox 應用於個人履歷版面設計。", href: "./20261013-ch7-flex-ex01.html" },
+
+      { title: "Ch8 Form 表單", date: "2026.10.15", category: "forms", tag: "HTML Forms", icon: "fa-rectangle-list", desc: "認識常用表單欄位與 HTML 表單基本結構。", href: "./20261015-ch8-forms.html" },
+
+      { title: "Ch8 Form 表單排版練習", date: "2026.10.15", category: "forms", tag: "HTML Forms", icon: "fa-list-check", desc: "練習表單欄位配置、標籤與整體視覺排版。", href: "./20261015-ch8-forms-EX01.html" },
+
+      { title: "Ch8 Form 表單排版 AI ", date: "2026.10.27", category: "forms", tag: "HTML Forms", icon: "fa-wand-magic-sparkles", desc: "結合 AI 輔助優化表單介面與排版呈現。", href: "./20261027-ch8-forms-EX01-AI01.html" },
+
+      { title: "WOW.js 動畫練習", date: "2026.11.03", category: "spa", tag: "WOW.js", icon: "fa-wand-sparkles", desc: "運用 WOW.js 與動畫效果，讓網頁內容更有動態感。", href: "./20261103-wowjs動畫練習.html" },
+
+      { title: "SPA 一頁式網站", date: "2026.10.27", category: "spa", tag: "SPA", icon: "fa-window-restore", desc: "練習單頁式網站的區塊規劃與導覽體驗。", href: "./20261027 - SPA 一頁式.html" },
+
+      { title: "HW－SPA 形象官網設計與動畫應用", date: "作業作品", category: "spa", tag: "SPA / Homework", icon: "fa-chess-rook", desc: "整合單頁式網站設計、視覺風格與動畫應用。", href: "./HW - SPA - 形象官網設計與動畫應用.html" },
+
+      { title: "HW－SPA 形象官網設計與動畫應用 AI ", date: "作業作品", category: "spa", tag: "SPA / AI", icon: "fa-star", desc: "運用 AI 輔助完成形象官網的設計與呈現。", href: "./HW - SPA 形象官網設計與動畫應用_Ai.html" }
+    ];
+
+    const palette = {
+      html: { color: "#d94b43", bg: "#ffe6e1" },
+      js: { color: "#9a7412", bg: "#fff1c9" },
+      bootstrap: { color: "#7352b4", bg: "#eee7ff" },
+      flex: { color: "#34885a", bg: "#e1f4e7" },
+      forms: { color: "#c46c26", bg: "#ffecd9" },
+      spa: { color: "#5472b8", bg: "#e6edff" }
+    };
+
+    const grid = document.getElementById("worksGrid");
+    const searchInput = document.getElementById("searchInput");
+    const visibleCount = document.getElementById("visibleCount");
+    let activeFilter = "all";
+
+    function renderWorks() {
+      const keyword = searchInput.value.trim().toLowerCase();
+      const filtered = works.filter(work => {
+        const matchesCategory = activeFilter === "all" || work.category === activeFilter;
+        const matchesKeyword = `${work.title} ${work.tag} ${work.desc}`.toLowerCase().includes(keyword);
+        return matchesCategory && matchesKeyword;
+      });
+
+      visibleCount.textContent = filtered.length;
+      grid.innerHTML = "";
+
+      if (!filtered.length) {
+        grid.innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass"></i>找不到符合條件的作品，試試其他關鍵字吧！</div>';
+        return;
+      }
+
+      filtered.forEach((work, index) => {
+        const colors = palette[work.category];
+        const card = document.createElement("article");
+        card.className = "work-card";
+        card.style.setProperty("--card-color", colors.color);
+        card.style.setProperty("--card-accent", colors.bg);
+        card.style.animationDelay = `${Math.min(index * 35, 280)}ms`;
+
+        const top = document.createElement("div");
+        top.className = "card-top";
+        top.innerHTML = `<span class="work-icon"><i class="fa-solid ${work.icon}"></i></span><span class="work-number">NO. ${String(works.indexOf(work) + 1).padStart(2, "0")}</span>`;
+
+        const heading = document.createElement("h3");
+        heading.textContent = work.title;
+        const description = document.createElement("p");
+        description.textContent = work.desc;
+
+        const bottom = document.createElement("div");
+        bottom.className = "card-bottom";
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = work.tag;
+
+        const link = document.createElement("a");
+        link.className = "work-link";
+        link.href = work.href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.innerHTML = '查看作品 <i class="fa-solid fa-arrow-up-right-from-square"></i>';
+        link.setAttribute("aria-label", `開啟作品：${work.title}`);
+
+        bottom.append(tag, link);
+        card.append(top, heading, description, bottom);
+        grid.appendChild(card);
+      });
+    }
+
+    document.querySelectorAll(".filter-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active")?.classList.remove("active");
+        button.classList.add("active");
+        activeFilter = button.dataset.filter;
+        renderWorks();
+      });
+    });
+
+    searchInput.addEventListener("input", renderWorks);
+    document.getElementById("workCount").textContent = works.length;
+    renderWorks();
+  </script>
 </body>
+
 </html>
