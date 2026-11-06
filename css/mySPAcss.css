@@ -1,0 +1,194 @@
+/* 當滑鼠移到 .custom-dropdown 上時，自動顯示內部的 .dropdown-menu */
+.custom-dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* 修正選單彈出時的小空隙，讓滑鼠移過去時不會斷開 */
+}
+
+/* 讓下拉選單的背景與遊戲官網 Dark 風格融合，並微調文字與邊框 */
+.dropdown-menu-dark {
+    background-color: rgba(20, 20, 20, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* 滑鼠移到子選單項目上的背景色效果 */
+.dropdown-menu-dark .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.bg-img {
+    width: 100%;
+    height: 250px; /* 依照你想要的格子高度調整 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 8px; /* 讓邊角圓滑一點好看 */
+}
+
+.character-card img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* 滑鼠移上去時的 Hover 效果 */
+.character-card img:hover {
+    transform: translateY(-8px) scale(1.03); /* 輕微往上浮動並放大 */
+    box-shadow: 0 1rem 2rem rgba(255, 215, 0, 0.3) !important; /* 加上金黃色光暈陰影 */
+}
+
+/* 時間軸點擊與懸停互動效果 */
+.timeline-content {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.timeline-content:hover,
+.timeline-item.active .timeline-content {
+    border-color: #ffca2c !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 202, 44, 0.15) !important;
+}
+
+.timeline-dot {
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover ~ .timeline-dot,
+.timeline-item.active .timeline-dot {
+    border-color: #ffca2c !important;
+    background-color: #ffca2c !important;
+    box-shadow: 0 0 15px #ffca2c;
+}
+
+.timeline-content:hover ~ .timeline-dot i,
+.timeline-item.active .timeline-dot i {
+    color: #000000 !important;
+}
+
+/* 遊戲下載按鈕互動效果 */
+.download-cta-btn {
+    transition: all 0.3s ease;
+}
+
+.download-cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 202, 44, 0.25) !important;
+}
+
+/* 自訂 FAQ 手風琴展開與懸停樣式 */
+.custom-accordion .accordion-button:not(.collapsed) {
+    background-color: #2a2a40 !important;
+    color: #ffca2c !important;
+    box-shadow: none !important;
+}
+
+.custom-accordion .accordion-button:focus {
+    box-shadow: none !important;
+    border-color: #ffca2c;
+}
+
+.custom-accordion .accordion-item {
+    border: 1px solid #495057 !important;
+    transition: all 0.3s ease;
+}
+
+.custom-accordion .accordion-item:hover {
+    border-color: #ffca2c !important;
+}
+
+/* 影音卡片懸停效果 */
+.media-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.media-card .play-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.media-card:hover .play-overlay {
+    opacity: 1;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffca2c !important;
+    box-shadow: 0 10px 20px rgba(255, 202, 44, 0.2) !important;
+}
+
+/* 相簿 Gallery 卡片與遮罩效果 */
+.gallery-card {
+    transition: all 0.3s ease;
+}
+
+.gallery-card .gallery-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-card:hover {
+    border-color: #ffca2c !important;
+    transform: translateY(-5px);
+}
+
+.gallery-img {
+    transition: transform 0.5s ease;
+}
+
+.gallery-card:hover .gallery-img {
+    transform: scale(1.1);
+}
+
+/* 權威媒體評分卡片互動效果 */
+.review-badge-card {
+    transition: all 0.3s ease;
+}
+
+.review-badge-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffca2c !important;
+    box-shadow: 0 10px 20px rgba(255, 202, 44, 0.15) !important;
+}
+
+/* 權威媒體評分卡片互動效果 */
+.review-badge-card {
+    transition: all 0.3s ease;
+}
+
+.review-badge-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffca2c !important;
+    box-shadow: 0 10px 20px rgba(255, 202, 44, 0.15) !important;
+}
+
+/* 地圖選單樣式 */
+.custom-map-menu .list-group-item {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.custom-map-menu .list-group-item:hover {
+    border-color: #ffca2c !important;
+    transform: translateX(5px);
+}
+
+.custom-map-menu .list-group-item.active {
+    background-color: #2a2a40 !important;
+    border-color: #ffca2c !important;
+    box-shadow: 0 4px 15px rgba(255, 202, 44, 0.2);
+}
+
+/* 圖片淡入淡出切換特效 */
+.map-img-fade {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.map-img-fade.hide {
+    opacity: 0;
+    transform: scale(1.03);
+}
