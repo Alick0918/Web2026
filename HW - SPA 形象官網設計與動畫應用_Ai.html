@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA 形象官網設計與動畫應用</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="css/mySPAcss.css">
+    <link rel="stylesheet" href="css/mySPAcss-AiC.css">
+    <style id="astra-custom-theme">
+        :root {
+            --astra-ink: #0b1220;
+            --astra-night: #111b30;
+            --astra-panel: #1a2942;
+            --astra-gold: #d8b56b;
+            --astra-gold-deep: #b88b3d;
+            --astra-teal: #79c7c3;
+            --astra-paper: #f4f1e8;
+            --astra-muted: #c5cedd;
+            --astra-line: rgba(216, 181, 107, .42);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body.astra-site {
+            background: var(--astra-ink);
+            color: var(--astra-paper);
+        }
+
+        section {
+            scroll-margin-top: 1rem;
+        }
+
+        /* 自訂品牌色：覆寫 Bootstrap 色彩工具類別，避免直接沿用預設藍／紅／綠 */
+        .bg-dark {
+            background-color: var(--astra-night) !important;
+        }
+
+        .bg-secondary {
+            background-color: #34445f !important;
+        }
+
+        .bg-primary {
+            background-color: var(--astra-teal) !important;
+        }
+
+        .bg-success {
+            background-color: #397f7b !important;
+        }
+
+        .bg-danger {
+            background-color: #a94f58 !important;
+        }
+
+        .bg-warning {
+            background-color: var(--astra-gold) !important;
+        }
+
+        .text-primary {
+            color: var(--astra-teal) !important;
+        }
+
+        .text-success {
+            color: var(--astra-teal) !important;
+        }
+
+        .text-danger {
+            color: #e58b91 !important;
+        }
+
+        .text-warning {
+            color: var(--astra-gold) !important;
+        }
+
+        .text-muted {
+            color: var(--astra-muted) !important;
+        }
+
+        .border-warning {
+            border-color: var(--astra-gold) !important;
+        }
+
+        .border-secondary {
+            border-color: rgba(197, 206, 221, .25) !important;
+        }
+
+
+        .text-bg-warning {
+            color: #172238 !important;
+            background-color: var(--astra-gold) !important;
+        }
+
+        .text-bg-success {
+            color: #081c20 !important;
+            background-color: var(--astra-teal) !important;
+        }
+
+        .btn-primary,
+        .btn-warning {
+            color: #182033 !important;
+            background: var(--astra-gold) !important;
+            border-color: var(--astra-gold) !important;
+            font-weight: 700;
+        }
+
+        .btn-primary:hover,
+        .btn-warning:hover {
+            color: #101827 !important;
+            background: #edcf8d !important;
+            border-color: #edcf8d !important;
+        }
+
+        .btn-success {
+            color: #071c20 !important;
+            background: var(--astra-teal) !important;
+            border-color: var(--astra-teal) !important;
+        }
+
+        .btn-secondary {
+            color: var(--astra-paper) !important;
+            background: #43516a !important;
+            border-color: #65748d !important;
+        }
+
+        .btn-outline-light {
+            color: var(--astra-paper) !important;
+            border-color: rgba(244, 241, 232, .7) !important;
+        }
+
+        .modal-content {
+            color: var(--astra-paper);
+            background: var(--astra-night);
+            border: 1px solid var(--astra-line);
+            box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, .35);
+        }
+
+        .modal-header,
+        .modal-footer {
+            border-color: rgba(197, 206, 221, .2) !important;
+        }
+
+        .modal .modal-body,
+        .modal .modal-body p,
+        .modal .modal-body li {
+            color: #e1e6ef;
+        }
+
+        .modal .form-label,
+        .modal .form-check-label,
+        .modal .form-floating>label {
+            color: #f4f1e8 !important;
+            font-weight: 600;
+        }
+
+        .modal .form-control,
+        .modal .form-select,
+        #s14 .form-control,
+        #s14 .form-select {
+            color: #172238;
+            background-color: #f7f8fb;
+            border: 1px solid #aeb9ca;
+        }
+
+        .modal .form-control::placeholder,
+        #s14 .form-control::placeholder {
+            color: #66748a;
+            opacity: 1;
+        }
+
+        .modal .form-control:focus,
+        .modal .form-select:focus,
+        #s14 .form-control:focus,
+        #s14 .form-select:focus {
+            border-color: var(--astra-gold-deep);
+            box-shadow: 0 0 0 .2rem rgba(216, 181, 107, .22);
+        }
+
+        .modal .form-check-input:checked {
+            background-color: #397f7b;
+            border-color: #397f7b;
+        }
+
+        #s14 {
+            color: var(--astra-paper);
+            background: #e9edf3;
+        }
+
+        #s14 h1 {
+            color: #172238;
+        }
+
+        #s14>.container>.h1 p {
+            color: #4e5c70 !important;
+        }
+
+        #s14 .form-floating>label {
+            color: #43516a !important;
+        }
+
+        .character-card,
+        .media-card,
+        .gallery-card,
+        .download-cta-btn {
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .character-card:hover,
+        .media-card:hover,
+        .gallery-card:hover,
+        .download-cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, .28);
+        }
+
+        .character-card {
+            cursor: pointer;
+        }
+
+        .media-card {
+            cursor: pointer;
+        }
+
+        .media-card:focus-visible,
+        .character-card:focus-visible {
+            outline: 3px solid var(--astra-gold);
+            outline-offset: 4px;
+        }
+
+        .custom-map-menu .list-group-item {
+            color: var(--astra-paper);
+            background: #17243b;
+            border-color: rgba(216, 181, 107, .28);
+        }
+
+        .custom-map-menu .list-group-item.active {
+            color: #172238;
+            background: var(--astra-gold);
+            border-color: var(--astra-gold);
+        }
+
+        .map-img-fade {
+            transition: opacity .3s ease;
+        }
+
+        .map-img-fade.hide {
+            opacity: 0;
+        }
+
+        /* WOW.js 負責觸發，內容預設仍可見，避免 JS 未載入時整頁空白 */
+        .wow {
+            visibility: visible;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #172238 !important;
+            background: #d8b56b !important;
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 .2rem rgba(216, 181, 107, .2);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+    <style id="astra-loading-style">
+        /* 開場 Loading：異界冒險主題 */
+        #astra-loading-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(ellipse at 50% 42%, rgba(45, 66, 96, .42), transparent 58%),
+                linear-gradient(145deg, #080d18 0%, #111b30 52%, #080d18 100%);
+            opacity: 1;
+            visibility: visible;
+            transition: opacity .55s ease, visibility .55s ease;
+        }
+
+        #astra-loading-screen.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #astra-loading-screen .loading-content {
+            width: min(760px, 100%);
+            text-align: center;
+        }
+
+        #astra-loading-screen .loading-title {
+            margin: 0 0 28px;
+            color: #e4c27b;
+            font-family: Georgia, "Noto Serif TC", serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-shadow: 0 0 24px rgba(216, 181, 107, .25);
+        }
+
+        #astra-loading-screen .loading-subtitle {
+            margin: 0 0 18px;
+            color: #c5cedd;
+            font-size: clamp(.9rem, 2vw, 1.1rem);
+            letter-spacing: .22em;
+        }
+
+        #astra-loading-screen .loading-track {
+            position: relative;
+            height: 28px;
+            padding: 5px;
+            overflow: hidden;
+            border: 2px solid #d8b56b;
+            background: rgba(4, 8, 16, .88);
+            box-shadow: 0 0 0 1px rgba(216, 181, 107, .12), 0 0 28px rgba(0, 0, 0, .5);
+        }
+
+        #astra-loading-screen .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #8d682e 0%, #d8b56b 48%, #f5dfaa 100%);
+            box-shadow: 0 0 18px rgba(216, 181, 107, .45);
+            transition: width .08s linear;
+        }
+
+        #astra-loading-screen .loading-percent {
+            display: block;
+            margin-top: 14px;
+            color: #d8b56b;
+            font-variant-numeric: tabular-nums;
+            font-size: .95rem;
+            letter-spacing: .12em;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            #astra-loading-screen,
+            #astra-loading-screen .loading-progress {
+                transition: none;
+            }
+        }
+    </style>
+
+    <style id="astra-responsive-layout">
+        /* RWD：桌機、平板與手機版配置 */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img, video, iframe { max-width: 100%; }
+        .container, .container-fluid { min-width: 0; }
+        .row > * { min-width: 0; }
+
+        /* 平板 */
+        @media (max-width: 991.98px) {
+            #s01 .row { row-gap: .75rem; }
+            #s01 .row > .col-auto:last-child { width: 100%; }
+            #s01 .nav { justify-content: flex-end; flex-wrap: wrap; gap: .15rem; }
+            #s02 { background-size: cover !important; background-position: center !important; }
+            #s02 .row.justify-content-start.ms-4 { margin-left: 0 !important; }
+            #s02 .row[style*="55vh"] { margin-top: 28vh !important; }
+            #s03 .carousel-item > img { height: 380px !important; }
+            #s06 .timeline-wrapper { max-width: 760px; }
+            #s07 { background-size: cover !important; }
+            #s11 { overflow-x: hidden; }
+            #s11 table { min-width: 620px; }
+        }
+
+        /* 手機 */
+        @media (max-width: 767.98px) {
+            body { font-size: 15px; }
+            section { scroll-margin-top: .5rem; }
+            .container, .container-fluid { padding-left: 1rem; padding-right: 1rem; }
+            section.py-5 { padding-top: 2.75rem !important; padding-bottom: 2.75rem !important; }
+            h1 { overflow-wrap: anywhere; }
+            h2 { font-size: clamp(1.45rem, 6vw, 2rem); }
+            .lead { font-size: 1rem; line-height: 1.7; }
+
+            /* 頂部導覽 */
+            #s01 .row { justify-content: center !important; text-align: center; }
+            #s01 .row > .col-auto:first-child { width: 100%; }
+            #s01 .row > .col-auto:last-child { width: 100%; }
+            #s01 .nav { justify-content: center; gap: .15rem .35rem; }
+            #s01 .nav-link { padding: .35rem .45rem; font-size: .82rem; }
+
+            /* 首頁主視覺與三顆操作按鈕 */
+            #s02 {
+                min-height: 100svh !important;
+                background-size: cover !important;
+                background-position: center !important;
+                padding-bottom: 2rem;
+            }
+            #s02 .container-fluid { padding-left: 1rem; padding-right: 1rem; }
+            #s02 .row.justify-content-end .col-auto { margin-left: auto; }
+            #s02 .row.justify-content-start.ms-4 { margin: 1.5rem 0 0 !important; }
+            #s02 .hero-intro { width: 100%; }
+            #s02 .hero-intro h1 { font-size: clamp(1.8rem, 8vw, 2.6rem); line-height: 1.35; }
+            #s02 .row[style*="55vh"] {
+                margin-top: clamp(3rem, 12vh, 6rem) !important;
+                justify-content: center !important;
+            }
+            #s02 .row[style*="55vh"] > div {
+                width: 100%;
+                margin-left: 0 !important;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: .75rem !important;
+            }
+            #s02 .row[style*="55vh"] a { flex: 0 1 auto; }
+            #s02 .row[style*="55vh"] a:nth-child(1),
+            #s02 .row[style*="55vh"] a:nth-child(3) {
+                width: 88px !important;
+                height: 88px !important;
+                font-size: .85rem;
+            }
+            #s02 .row[style*="55vh"] a:nth-child(2) {
+                width: 118px !important;
+                height: 118px !important;
+            }
+            #s02 .row[style*="55vh"] a:nth-child(2) span { font-size: 1.1rem !important; }
+
+            /* 輪播、卡片與公告 */
+            #s03 .container-fluid { padding-left: .75rem; padding-right: .75rem; }
+            #s03 .carousel-item > img { height: 260px !important; object-fit: cover; }
+            #s03 .carousel-control-prev, #s03 .carousel-control-next { width: 12% !important; }
+            #s03 .carousel-control-prev span, #s03 .carousel-control-next span {
+                width: 36px !important; height: 36px !important;
+            }
+            #s03 .carousel-control-prev i, #s03 .carousel-control-next i { font-size: 1.25rem; }
+            #s03 .carousel-caption { display: block !important; bottom: .5rem !important; }
+            #s03 .carousel-caption .btn { font-size: .8rem; padding: .35rem .7rem; }
+            #s04 .row { row-gap: .75rem; }
+            #s04 .row > [class*="col-"] { padding: .5rem !important; }
+            #s04 .card-img-top { height: 150px !important; }
+            #s05 .nav { gap: .25rem !important; flex-wrap: wrap; }
+            #s05 .nav-link { padding: .4rem .55rem; }
+            #s05 .list-group-item { padding: .85rem 1rem !important; }
+            #s05 .list-group-item > div { min-width: 0; flex-wrap: wrap; gap: .35rem; }
+            #s05 .list-group-item .text-muted { min-width: auto !important; margin-right: .35rem !important; }
+
+            /* 時間軸改為單欄，避免中央線與內容重疊 */
+            #s06 .timeline-wrapper { padding-left: .25rem; padding-right: .25rem; }
+            #s06 .timeline-wrapper > .position-absolute { display: none; }
+            #s06 .timeline-item { margin-bottom: 2rem !important; }
+            #s06 .timeline-item > [class*="col-"] {
+                width: 100%;
+                text-align: left !important;
+                padding-left: .75rem !important;
+                padding-right: .75rem !important;
+            }
+            #s06 .timeline-item .position-relative { justify-content: center !important; }
+            #s06 .timeline-item img { width: 100%; max-width: 100%; height: auto; }
+
+            /* 其他內容區 */
+            #s07 { min-height: auto !important; background-size: cover !important; }
+            #s07 img { max-width: 100%; }
+            #s08 .row > [class*="col-"] { width: 100%; }
+            #s09 .row { row-gap: 1.5rem; }
+            #s09 .row > [class*="col-"] { width: 100%; }
+            #s10 .row > [class*="col-"] { width: 100%; }
+            #s11 { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            #s11 table { min-width: 600px; }
+            #s12 .row > .col-6 { padding-left: .5rem; padding-right: .5rem; }
+            #s13 .row > [class*="col-"] { width: 100%; }
+            #s14 .row > [class*="col-"] { width: 100%; }
+            #s14 .form-control, #s14 .form-select { font-size: 16px; }
+            #s15 { text-align: center; }
+        }
+
+        /* 小型手機 */
+        @media (max-width: 420px) {
+            #s01 .nav-link { font-size: .75rem; padding: .3rem .35rem; }
+            #s02 .hero-intro h1 { font-size: 1.7rem; }
+            #s02 .row[style*="55vh"] > div { gap: .5rem !important; }
+            #s02 .row[style*="55vh"] a:nth-child(1),
+            #s02 .row[style*="55vh"] a:nth-child(3) {
+                width: 76px !important; height: 76px !important;
+                font-size: .78rem;
+            }
+            #s02 .row[style*="55vh"] a:nth-child(2) {
+                width: 104px !important; height: 104px !important;
+            }
+            #s03 .carousel-item > img { height: 220px !important; }
+            #s04 .card-img-top { height: 125px !important; }
+        }
+    </style>
+
+</head>
+
+<body class="astra-site">
+
+    <!-- 開場 Loading -->
+    <div id="astra-loading-screen" role="status" aria-live="polite" aria-label="網頁載入中">
+        <div class="loading-content">
+            <h1 class="loading-title">LOADING</h1>
+            <p class="loading-subtitle" id="astra-loading-message">正在開啟異界冒險之門</p>
+            <div class="loading-track" role="progressbar" aria-label="載入進度" aria-valuemin="0" aria-valuemax="100"
+                aria-valuenow="0">
+                <div class="loading-progress" id="astra-loading-progress"></div>
+            </div>
+            <span class="loading-percent" id="astra-loading-percent">0%</span>
+        </div>
+    </div>
+
+    <!-- s01 -->
+    <section id="s01" class="bg-dark text-white">
+        <div class="container-fluid px-3">
+            <div class="row d-flex justify-content-between align-items-center py-3">
+                <!-- 左上角 遊戲名稱(首頁) -->
+                <div class="col-auto">
+                    <a href="#" class="text-white text-decoration-none fw-900 fs-5 m-0">異界冒險 Astra Adventurers</a>
+                </div>
+                <!-- 右上角 導覽選單 -->
+                <div class="col-auto">
+                    <ul class="nav d-flex align-items-center mb-0">
+                        <li class="nav-item dropdown custom-dropdown">
+                            <a class="nav-link text-white" href="#" role="button" aria-expanded="false">異界情報</a>
+                            <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">全部</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">活動</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown custom-dropdown">
+                            <a class="nav-link text-white" href="#" role="button" aria-expanded="false">冒險者指南</a>
+                            <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">職業介紹</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">系統介紹</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">戰地排行</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">初入遊戲說明</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown custom-dropdown">
+                            <a class="nav-link text-white" href="#" role="button" aria-expanded="false">下載專區</a>
+                            <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">主程式下載</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">更新檔下載</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">完整安裝說明</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">手動更新說明</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown custom-dropdown">
+                            <a class="nav-link text-white" href="#" role="button" aria-expanded="false">異界通行證</a>
+                            <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">遊戲帳號申請</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">修改密碼</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">遊戲管理規章</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">隱私權政策</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown custom-dropdown">
+                            <a class="nav-link text-white" href="#" role="button" aria-expanded="false">公會服務處</a>
+                            <ul class="dropdown-menu dropdown-menu-dark bg-dark">
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">客服中心</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white" href="#">外掛檢舉專區</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s02 社群 -->
+    <section id="s02" class="pt-2"
+        style="background-image: url('image/SPA_遊戲背景.jpeg'); background-size: 100% auto; background-position: center; background-repeat: no-repeat; min-height: 100vh;">
+        <div class="container-fluid px-4">
+            <div class="row justify-content-end">
+                <div class="col-auto">
+                    <div class="d-flex gap-3 mt-2">
+                        <a href="#">
+                            <i
+                                class="link-light text-decoration-none fa-brands fa-square-facebook text-primary fa-2x"></i>
+                        </a>
+                        <a href="#">
+                            <i class="link-light text-decoration-none fa-brands fa-instagram text-danger fa-2x"></i>
+                        </a>
+                        <a href="#">
+                            <i class="link-light text-decoration-none fa-brands fa-line text-success fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-start ms-4 mt-4">
+                <div class="col-lg-6 text-white hero-intro">
+                    <p class="text-uppercase fw-bold mb-2 astra-eyebrow">A NEW ADVENTURE AWAITS</p>
+                    <h1 class="display-5 fw-bold mb-2">踏入異界，寫下你的傳說</h1>
+                    <p class="lead mb-0">集結夥伴、探索未知領域，在每一次挑戰中解鎖專屬於你的冒險篇章。</p>
+                </div>
+            </div>
+            <div class="row justify-content-start align-items-center" style="margin-top: 55vh;">
+                <div class="col-auto d-flex align-items-center gap-4 ms-5">
+                    <!-- 左側按鈕：遊戲下載 -->
+                    <a href="#download"
+                        class="btn btn-dark rounded-circle border border-warning d-flex justify-content-center align-items-center"
+                        style="width: 110px; height: 110px; background-color: rgba(0, 0, 0, 0.7);">
+                        <span class="text-white fw-bold">遊戲下載</span>
+                    </a>
+                    <!-- 中間主按鈕：GAME START -->
+                    <a href="#"
+                        class="btn btn-warning rounded-circle shadow-lg d-flex flex-column justify-content-center align-items-center text-decoration-none"
+                        style="width: 160px; height: 160px; background: radial-gradient(circle, #ffca2c, #d39e00);"
+                        data-bs-toggle="modal" data-bs-target="#login">
+                        <span class="fw-bolder fs-4 text-dark m-0">GAME</span>
+                        <span class="fw-bolder fs-4 text-dark m-0">START</span>
+                    </a>
+                    <!-- 右側按鈕：註冊帳號 -->
+                    <a href="#"
+                        class="btn btn-dark rounded-circle border border-warning d-flex justify-content-center align-items-center"
+                        style="width: 110px; height: 110px; background-color: rgba(0, 0, 0, 0.7);"
+                        data-bs-toggle="modal" data-bs-target="#register">
+                        <span class="text-white fw-bold">註冊帳號</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- register -->
+    <div class="modal fade" id="register" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true"
+        data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header text-bg-warning">
+                    <h5 class="modal-title" id="registerModalLabel">會員註冊</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <h1>會員條款與使用守則</h1>
+                            <p>1.帳號安全：會員應妥善保管個人帳號與密碼，不得轉讓或租借他人使用。若發現帳號遭冒用，請立即通知本平台處理。</p>
+                            <p>2.個人資料：會員所提供之個人資料須真實完整。本平台將嚴格遵守隱私權政策，僅於服務範圍內合法蒐集、處理及利用。</p>
+                            <p>3.規範恪守：會員使用本服務時，禁止發表任何誹謗、猥褻、違法或侵犯他人權利之言論與內容，違者將承擔相關法律責任。</p>
+                            <p>4.服務變更：本平台保留隨時修改、暫停或終止服務之權利。條款修訂後將於網站公告，不另行個別通知。</p>
+                            <p>5.停權處理：若會員違反本守則或相關法規，本平台有權不經事前通知，暫時或永久終止該帳號之使用權利。</p>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" checked class="form-check-input" name="termsAgree"
+                                    id="termsAgree">
+                                <label for="termsAgree" class="form-check-label">遵守</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="registerUsername" class="form-label">帳號</label>
+                                <input type="text" class="form-control" id="registerUsername" name="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">密碼</label>
+                                <input type="password" class="form-control" id="registerPassword" name="password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerConfirmPassword" class="form-label">確認密碼</label>
+                                <input type="password" class="form-control" id="registerConfirmPassword"
+                                    name="confirmPassword">
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="registerEmail" name="email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="me-auto text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#login">已有帳號，前往登入</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login -->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true"
+        data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-bg-success">
+                    <h5 class="modal-title" id="loginModalLabel">會員登入</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="loginUsername" class="form-label">帳號</label>
+                        <input type="text" class="form-control" id="loginUsername" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">密碼</label>
+                        <input type="password" class="form-control" id="loginPassword" name="password">
+                    </div>
+                </div>
+                <div class="modal-footer d-flex">
+                    <a href="#" class="me-auto text-decoration-none" data-bs-toggle="modal"
+                        data-bs-target="#register">尚無帳號，前往註冊</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- S03 抽獎道具幻燈片 -->
+    <section id="s03" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container-fluid px-4">
+            <div class="text-center mb-5 wow animate__fadeInDown">
+                <p class="astra-eyebrow mb-2">ASTRA COLLECTION</p>
+                <h2 class="fw-bold mb-3">異界集結：夢幻獎池</h2>
+                <p class="text-light astra-section-intro mb-0">蒐集命運的碎片，邂逅稀有角色與傳說裝備，開啟下一段未知旅程。</p>
+            </div>
+            <!-- Bootstrap Carousel 幻燈片 -->
+            <div id="gachaCarousel" class="carousel slide" data-bs-ride="carousel">
+                <!-- 分頁指示器 -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#gachaCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="璀璨群星"></button>
+                    <button type="button" data-bs-target="#gachaCarousel" data-bs-slide-to="1"
+                        aria-label="時空幻化"></button>
+                    <button type="button" data-bs-target="#gachaCarousel" data-bs-slide-to="2"
+                        aria-label="神跡淬煉"></button>
+                    <button type="button" data-bs-target="#gachaCarousel" data-bs-slide-to="3"
+                        aria-label="幻獸萌寵"></button>
+                    <button type="button" data-bs-target="#gachaCarousel" data-bs-slide-to="4"
+                        aria-label="永恆印記"></button>
+                    <button type="button" data-bs-target="#gachaCarousel" data-bs-slide-to="5"
+                        aria-label="失落寶具"></button>
+                </div>
+                <!-- 幻燈片內容 -->
+                <div class="carousel-inner">
+                    <!-- Slide 1: 璀璨群星 -->
+                    <div class="carousel-item active">
+                        <img src="image/SPA_角色.png" class="d-block w-100 rounded-3" alt="璀璨群星"
+                            style="height: 500px; object-fit: cover; object-position: center 25%;">
+                        <div class="carousel-caption d-none d-md-block"
+                            style="bottom: -15px; right: 5px; left: auto; top: auto;">
+                            <button class="btn btn-warning btn-lg fw-bold">前往召喚</button>
+                        </div>
+                    </div>
+                    <!-- Slide 2: 時空幻化 -->
+                    <div class="carousel-item">
+                        <img src="image/SPA_時裝.png" class="d-block w-100 rounded-3" alt="時空幻化"
+                            style="height: 500px; object-fit: cover; object-position: center 25%;">
+                        <div class="carousel-caption d-none d-md-block"
+                            style="bottom: -15px; right: 5px; left: auto; top: auto;">
+                            <button class="btn btn-warning btn-lg fw-bold">前往幻化</button>
+                        </div>
+                    </div>
+                    <!-- Slide 3: 神跡淬煉 -->
+                    <div class="carousel-item">
+                        <img src="image/SPA_道具.png" class="d-block w-100 rounded-3" alt="神跡淬煉"
+                            style="height: 500px; object-fit: cover; object-position: center 25%;">
+                        <div class="carousel-caption d-none d-md-block"
+                            style="bottom: -15px; right: 5px; left: auto; top: auto;">
+                            <button class="btn btn-warning btn-lg fw-bold">前往強化</button>
+                        </div>
+                    </div>
+                    <!-- Slide 4: 幻獸萌寵 -->
+                    <div class="carousel-item">
+                        <img src="image/SPA_幻獸.png" class="d-block w-100 rounded-3" alt="幻獸萌寵"
+                            style="height: 500px; object-fit: cover; object-position: center 25%;">
+                        <div class="carousel-caption d-none d-md-block"
+                            style="bottom: -15px; right: 5px; left: auto; top: auto;">
+                            <button class="btn btn-warning btn-lg fw-bold">前往馴服</button>
+                        </div>
+                    </div>
+                    <!-- Slide 5: 永恆印記 -->
+                    <div class="carousel-item">
+                        <img src="image/SPA_永恆印記.png" class="d-block w-100 rounded-3" alt="永恆印記"
+                            style="height: 500px; object-fit: cover; object-position: center 40%;">
+                        <div class="carousel-caption d-none d-md-block"
+                            style="bottom: -15px; right: 5px; left: auto; top: auto;">
+                            <button class="btn btn-warning btn-lg fw-bold">前往獲得</button>
+                        </div>
+                    </div>
+                    <!-- Slide 6: 失落寶具 -->
+                    <div class="carousel-item">
+                        <img src="image/SPA_失落寶具.png" class="d-block w-100 rounded-3" alt="失落寶具"
+                            style="height: 500px; object-fit: cover; object-position: center 40%;">
+                        <div class="carousel-caption d-none d-md-block"
+                            style="bottom: -15px; right: 5px; left: auto; top: auto;">
+                            <button class="btn btn-warning btn-lg fw-bold">前往獲得</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 左右切換按鈕 -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#gachaCarousel" data-bs-slide="prev"
+                    style="width: 6%;">
+                    <span
+                        class="d-flex justify-content-center align-items-center rounded-circle bg-dark bg-opacity-50 border border-warning"
+                        style="width: 50px; height: 50px;">
+                        <i class="fa-solid fa-chevron-left text-warning fa-3x"></i>
+                    </span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#gachaCarousel" data-bs-slide="next"
+                    style="width: 6%;">
+                    <span
+                        class="d-flex justify-content-center align-items-center rounded-circle bg-dark bg-opacity-50 border border-warning"
+                        style="width: 50px; height: 50px;">
+                        <i class="fa-solid fa-chevron-right text-warning fa-3x"></i>
+                    </span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- S04 抽獎道具切版 -->
+    <section id="s04" class="astra-section-light py-5">
+        <div class="container text-center mb-3 wow animate__fadeInDown">
+            <p class="astra-eyebrow mb-2">EVENTS & SPECIALS</p>
+            <h2 class="fw-bold mb-2">異界焦點｜活動情報</h2>
+            <p class="text-purple mb-0">掌握限時活動與珍稀獎勵，別錯過每一次提升實力的機會。</p>
+        </div>
+        <div class="container">
+            <div class="row g-2">
+                <div class="col-md-4 p-4 wow animate__fadeInUp">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card h-100 border shadow-sm">
+                            <img src="image/SPA_角色.png" class="card-img-top" alt="璀璨群星"
+                                style="height: 180px; object-fit: cover;">
+                            <!-- 內容與底部資訊區塊 -->
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <!-- 標題 -->
+                                <h5 class="card-title fw-bold mb-3">璀璨群星</h5>
+                                <!-- 底部：左邊時間、右邊超連結 -->
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="text-muted small">2026.11.04</span>
+                                    <a href="#" class="btn btn-primary btn-sm px-3">活動</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 p-4 wow animate__fadeInUp">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card h-100 border shadow-sm">
+                            <img src="image/SPA_時裝.png" class="card-img-top" alt="時空幻化"
+                                style="height: 180px; object-fit: cover;">
+                            <!-- 內容與底部資訊區塊 -->
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <!-- 標題 -->
+                                <h5 class="card-title fw-bold mb-3">時空幻化</h5>
+                                <!-- 底部：左邊時間、右邊超連結 -->
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="text-muted small">2026.11.04</span>
+                                    <a href="#" class="btn btn-primary btn-sm px-3">活動</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 p-4 wow animate__fadeInUp">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card h-100 border shadow-sm">
+                            <img src="image/SPA_道具.png" class="card-img-top" alt="神跡淬煉"
+                                style="height: 180px; object-fit: cover;">
+                            <!-- 內容與底部資訊區塊 -->
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <!-- 標題 -->
+                                <h5 class="card-title fw-bold mb-3">神跡淬煉</h5>
+                                <!-- 底部：左邊時間、右邊超連結 -->
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="text-muted small">2026.11.04</span>
+                                    <a href="#" class="btn btn-primary btn-sm px-3">活動</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 p-4 wow animate__fadeInUp">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card h-100 border shadow-sm">
+                            <img src="image/SPA_幻獸.png" class="card-img-top" alt="幻獸萌寵"
+                                style="height: 180px; object-fit: cover;">
+                            <!-- 內容與底部資訊區塊 -->
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <!-- 標題 -->
+                                <h5 class="card-title fw-bold mb-3">幻獸萌寵</h5>
+                                <!-- 底部：左邊時間、右邊超連結 -->
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="text-muted small">2026.11.04</span>
+                                    <a href="#" class="btn btn-primary btn-sm px-3">活動</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 p-4 wow animate__fadeInUp">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card h-100 border shadow-sm">
+                            <img src="image/SPA_永恆印記.png" class="card-img-top" alt="永恆印記"
+                                style="height: 180px; object-fit: cover;">
+                            <!-- 內容與底部資訊區塊 -->
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <!-- 標題 -->
+                                <h5 class="card-title fw-bold mb-3">永恆印記</h5>
+                                <!-- 底部：左邊時間、右邊超連結 -->
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="text-muted small">2026.11.04</span>
+                                    <a href="#" class="btn btn-primary btn-sm px-3">活動</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 p-4 wow animate__fadeInUp">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="card h-100 border shadow-sm">
+                            <img src="image/SPA_失落寶具.png" class="card-img-top" alt="失落寶具"
+                                style="height: 180px; object-fit: cover;">
+                            <!-- 內容與底部資訊區塊 -->
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <!-- 標題 -->
+                                <h5 class="card-title fw-bold mb-3">失落寶具</h5>
+                                <!-- 底部：左邊時間、右邊超連結 -->
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="text-muted small">2026.11.04</span>
+                                    <a href="#" class="btn btn-primary btn-sm px-3">活動</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s05 公告內容 -->
+    <section id="s05" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container">
+            <!-- 標題 -->
+            <div class="text-center mb-4 wow animate__fadeInDown">
+                <p class="astra-eyebrow mb-2">LATEST NEWS</p>
+                <h2 class="fw-bold mb-2">最新公告</h2>
+                <p class="text-light astra-section-intro mb-0">維護資訊、版本更新與活動消息，第一時間掌握異界動態。</p>
+            </div>
+            <!-- 上方分類標籤 (全部 / 活動 / 更新 / 重要) -->
+            <ul class="nav justify-content-center mb-4 gap-3">
+                <li class="nav-item">
+                    <a class="nav-link text-danger fw-bold active border-bottom border-danger border-2" href="#">全部</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">活動</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">更新</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">重要</a>
+                </li>
+            </ul>
+            <!-- 公告清單區塊 -->
+            <div class="list-group bg-dark border-secondary rounded shadow-sm">
+                <!-- 公告項目 1 (活動) -->
+                <a href="#"
+                    class="list-group-item list-group-item-action bg-dark text-light border-secondary d-flex justify-content-between align-items-center py-3 px-4">
+                    <div class="d-flex align-items-center text-truncate">
+                        <span class="text-muted me-4 small" style="min-width: 95px;">2026.11.05</span>
+                        <span class="badge bg-primary me-3 px-2 py-1">活動</span>
+                        <span class="text-truncate">【幻獸萌寵】吉祥物九尾狐 </span>
+                    </div>
+                </a>
+                <!-- 公告項目 2 (活動) -->
+                <a href="#"
+                    class="list-group-item list-group-item-action bg-dark text-light border-secondary d-flex justify-content-between align-items-center py-3 px-4">
+                    <div class="d-flex align-items-center text-truncate">
+                        <span class="text-muted me-4 small" style="min-width: 95px;">2026.11.05</span>
+                        <span class="badge bg-primary me-3 px-2 py-1">活動</span>
+                        <span class="text-truncate">【時空幻化】魔法師長袍回歸！</span>
+                    </div>
+                </a>
+                <!-- 公告項目 3 (更新 - 可使用橘棕色系背景) -->
+                <a href="#"
+                    class="list-group-item list-group-item-action bg-dark text-light border-secondary d-flex justify-content-between align-items-center py-3 px-4">
+                    <div class="d-flex align-items-center text-truncate">
+                        <span class="text-muted me-4 small" style="min-width: 95px;">2026.11.05</span>
+                        <span class="badge me-3 px-2 py-1" style="background-color: #b95c2d;">更新</span>
+                        <span class="text-truncate">《1105(四)異界冒險例行維護開機公告》</span>
+                    </div>
+                </a>
+                <!-- 公告項目 4 (重要 - 紅色) -->
+                <a href="#"
+                    class="list-group-item list-group-item-action bg-dark text-light border-secondary d-flex justify-content-between align-items-center py-3 px-4">
+                    <div class="d-flex align-items-center text-truncate">
+                        <span class="text-muted me-4 small" style="min-width: 95px;">2026.11.01</span>
+                        <span class="badge bg-danger me-3 px-2 py-1">重要</span>
+                        <span class="text-truncate">異界冒險《1029(四)異常裝備掉落問題說明》</span>
+                    </div>
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action bg-dark text-light border-secondary d-flex justify-content-between align-items-center py-3 px-4">
+                    <div class="d-flex align-items-center text-truncate">
+                        <span class="text-muted me-4 small" style="min-width: 95px;">2026.10.31</span>
+                        <span class="badge bg-primary me-3 px-2 py-1">活動</span>
+                        <span class="text-truncate">開服同慶 登入送超稀有萬聖節萌寵！</span>
+                    </div>
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action bg-dark text-light border-secondary d-flex justify-content-between align-items-center py-3 px-4">
+                    <div class="d-flex align-items-center text-truncate">
+                        <span class="text-muted me-4 small" style="min-width: 95px;">2026.10.10</span>
+                        <span class="badge bg-primary me-3 px-2 py-1">活動</span>
+                        <span class="text-truncate">雙十測服啟動 一起加入成為冒險者吧！</span>
+                    </div>
+                </a>
+            </div>
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <!-- 上一頁 -->
+                    <li class="page-item disabled">
+                        <a class="page-link bg-dark text-secondary border-secondary" href="#" tabindex="-1">&laquo;</a>
+                    </li>
+                    <!-- 頁碼 1-10 -->
+                    <li class="page-item active">
+                        <a class="page-link bg-danger border-danger text-white" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">4</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">5</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">6</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">7</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">8</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">9</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">10</a>
+                    </li>
+                    <!-- 下一頁 -->
+                    <li class="page-item">
+                        <a class="page-link bg-dark text-light border-secondary" href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <!-- s06 歷史事件與發展歷程 (Timeline) -->
+    <section id="s06" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container py-4">
+            <!-- 標題 -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
+                <i class="fa-brands fa-xing fa-2x text-warning"></i>
+                <h2 class="fw-bold mb-0 text-white">異界歷史與發展歷程</h2>
+                <i class="fa-brands fa-xing fa-rotate-180 fa-2x text-warning"></i>
+            </div>
+            <!-- 時間軸容器 -->
+            <div class="timeline-wrapper position-relative mx-auto" style="max-width: 900px;">
+                <!-- 中央垂直線 -->
+                <div class="timeline-line position-absolute top-0 bottom-0 start-50 translate-middle-x bg-secondary opacity-50"
+                    style="width: 4px;"></div>
+                <!-- 節點 1：創世紀元 -->
+                <div class="row g-0 align-items-center mb-5 timeline-item wow animate__fadeInUp">
+                    <div class="col-md-6 text-md-end pe-md-4 order-2 order-md-1">
+                        <div class="p-4 bg-dark rounded-4 border border-secondary timeline-content shadow">
+                            <span class="badge bg-warning text-dark mb-2 fw-bold">創世紀元 1000 年</span>
+                            <h4 class="fw-bold text-warning">創世紀元：阿斯特拉裂隙爆發</h4>
+                            <p class="text-muted small mb-0">原始魔法核心撕裂空間，元素能量外溢造成天地異變，三大初始種族建立防線並簽署《異界和平盟約》。</p>
+                        </div>
+                    </div>
+                    <div
+                        class="col-md-6 ps-md-4 order-1 order-md-2 mb-3 mb-md-0 d-flex justify-content-center justify-content-md-start position-relative">
+                        <div class="timeline-dot rounded-circle bg-dark border border-3 border-warning d-flex justify-content-center align-items-center position-relative z-1"
+                            style="width: 40px; height: 40px; left: -20px;">
+                            <i class="fa-solid fa-gem text-warning fs-6"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- 節點 2：黑暗戰爭 -->
+                <div class="row g-0 align-items-center mb-5 timeline-item wow animate__fadeInUp">
+                    <div
+                        class="col-md-6 pe-md-4 order-1 mb-3 mb-md-0 d-flex justify-content-center justify-content-md-end position-relative">
+                        <div class="timeline-dot rounded-circle bg-dark border border-3 border-secondary d-flex justify-content-center align-items-center position-relative z-1"
+                            style="width: 40px; height: 40px; right: -20px;">
+                            <i class="fa-solid fa-shield-halved text-white fs-6"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ps-md-4 order-2">
+                        <div class="p-4 bg-dark rounded-4 border border-secondary timeline-content shadow">
+                            <span class="badge bg-danger mb-2 fw-bold">創世紀元 1520 年</span>
+                            <h4 class="fw-bold text-warning">黑暗戰爭：深淵主宰降臨</h4>
+                            <p class="text-muted small mb-0">深淵軍團入侵大陸，四大職業始祖聯手於古戰場封印深淵主宰，並留下四大核心轉職傳承。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 節點 3：冒險者公會成立 -->
+                <div class="row g-0 align-items-center mb-5 timeline-item wow animate__fadeInUp">
+                    <div class="col-md-6 text-md-end pe-md-4 order-2 order-md-1">
+                        <div class="p-4 bg-dark rounded-4 border border-secondary timeline-content shadow">
+                            <span class="badge bg-primary mb-2 fw-bold">創世紀元 1850 年</span>
+                            <h4 class="fw-bold text-warning">聯盟建立：冒險者公會誕生</h4>
+                            <p class="text-muted small mb-0">為維護大陸和平並探索未知區域，冒險者公會正式成立，頒發第一批「異界通行證」。</p>
+                        </div>
+                    </div>
+                    <div
+                        class="col-md-6 ps-md-4 order-1 order-md-2 mb-3 mb-md-0 d-flex justify-content-center justify-content-md-start position-relative">
+                        <div class="timeline-dot rounded-circle bg-dark border border-3 border-secondary d-flex justify-content-center align-items-center position-relative z-1"
+                            style="width: 40px; height: 40px; left: -20px;">
+                            <i class="fa-solid fa-flag text-white fs-6"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- 節點 4：全域冒險開啟 -->
+                <div class="row g-0 align-items-center timeline-item">
+                    <div
+                        class="col-md-6 pe-md-4 order-1 mb-3 mb-md-0 d-flex justify-content-center justify-content-md-end position-relative">
+                        <div class="timeline-dot rounded-circle bg-dark border border-3 border-secondary d-flex justify-content-center align-items-center position-relative z-1"
+                            style="width: 40px; height: 40px; right: -20px;">
+                            <i class="fa-solid fa-dragon text-white fs-6"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ps-md-4 order-2">
+                        <div class="p-4 bg-dark rounded-4 border border-secondary timeline-content shadow">
+                            <span class="badge bg-success mb-2 fw-bold">2026 年（現今）</span>
+                            <h4 class="fw-bold text-warning">新紀元：異界冒險 Astra 開啟</h4>
+                            <p class="text-muted small mb-0">全新四轉覺醒職業開放、夢幻獎池與幻獸系統全面啟動，邀請全體冒險者啟程進入新時代！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s07 職業介紹 -->
+    <section id="s07" class="py-4"
+        style="background-image: url(image/SPA_遊戲背景.jpeg); background-size: 100%; background-position: center; background-repeat: no-repeat; min-height: 70vh;">
+        <div class="container-fluid text-center">
+            <div class="d-flex justify-content-center align-items-center gap-1">
+                <i class="fa-brands fa-xing fa-3x"></i>
+                <h1 class="mb-0">職業介紹</h1>
+                <i class="fa-brands fa-xing fa-rotate-180 fa-3x"></i>
+            </div>
+            <p class="text-light mt-3 mb-0 wow animate__fadeInUp" data-wow-duration="0.8s">
+                選擇你的起始職業，查看各系分支特色與覺醒方向，打造最適合自己的冒險定位。</p>
+        </div>
+        <div class="container py-5">
+            <div class="row justify-content-center g-3">
+                <!-- 卡片 1 -->
+                <div class="col-6 col-md-2 wow animate__fadeInUp" data-wow-delay="0s">
+                    <div class="card bg-transparent border-0 h-100 character-card" data-bs-toggle="modal"
+                        data-bs-target="#warriorModal" style="cursor: pointer;">
+                        <img src="image/SPA_劍士.png" class="card-img rounded-4 border border-2 border-warning shadow"
+                            alt="劍士" style="height: 350px; object-fit: cover;">
+                    </div>
+                </div>
+                <!-- 卡片 2 -->
+                <div class="col-6 col-md-2 wow animate__fadeInUp" data-wow-delay="0.12s">
+                    <div class="card bg-transparent border-0 h-100 character-card" data-bs-toggle="modal"
+                        data-bs-target="#mageModal" style="cursor: pointer;">
+                        <img src="image/SPA_法師.jpeg" class="card-img rounded-4 border border-2 border-warning shadow"
+                            alt="法師" style="height: 350px; object-fit: cover;">
+                    </div>
+                </div>
+                <!-- 卡片 3 -->
+                <div class="col-6 col-md-2 wow animate__fadeInUp" data-wow-delay="0.24s">
+                    <div class="card bg-transparent border-0 h-100 character-card" data-bs-toggle="modal"
+                        data-bs-target="#archerModal" style="cursor: pointer;">
+                        <img src="image/SPA_弓箭手.jpeg" class="card-img rounded-4 border border-2 border-warning shadow"
+                            alt="弓箭手" style="height: 350px; object-fit: cover;">
+                    </div>
+                </div>
+                <!-- 卡片 4 -->
+                <div class="col-6 col-md-2 wow animate__fadeInUp" data-wow-delay="0.36s">
+                    <div class="card bg-transparent border-0 h-100 character-card" data-bs-toggle="modal"
+                        data-bs-target="#rogueModal" style="cursor: pointer;">
+                        <img src="image/SPA_盜賊.png" class="card-img rounded-4 border border-2 border-warning shadow"
+                            alt="盜賊" style="height: 350px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 劍士分支彈跳視窗 -->
+    <div class="modal fade" id="warriorModal" tabindex="-1" aria-labelledby="warriorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark text-white border border-warning">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-warning" id="warriorModalLabel">劍士系職業分支</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <!-- 左側：角色圖片（請加上 job-preview-img） -->
+                        <div class="col-md-6 text-center mb-3 mb-md-0">
+                            <img src="image/SPA_劍士.png"
+                                class="img-fluid rounded-4 border border-2 border-warning shadow job-preview-img"
+                                alt="劍士立繪" style="max-height: 350px; object-fit: cover;">
+                        </div>
+                        <!-- 右側：文字介紹與分支選項 -->
+                        <div class="col-md-6">
+                            <h4 class="fw-bold text-warning mb-2">近戰的鋼鐵防線 - 劍士</h4>
+                            <p class="text-muted small mb-3">擁有極高的生命力與防禦力，擅長使用各類重武裝在最前線衝鋒陷陣，是隊伍中不可或缺的核心壁壘。</p>
+                            <p class="text-white fw-bold mb-2">轉職分支：</p>
+                            <div class="list-group bg-transparent">
+                                <a href="#"
+                                    class="list-group-item list-group-item-action bg-secondary text-white border-dark mb-2 rounded py-2 job-option"
+                                    data-img="image/SPA_龍騎士.png">
+                                    <strong>龍騎士 (Dragon knight)</strong>
+                                    <br>
+                                    <span class="small text-light">精通雙手劍與狂氣鬥氣，具備極致的單体爆发與持續輸出能力。</span>
+                                </a>
+                                <a href="#"
+                                    class="list-group-item list-group-item-action bg-secondary text-white border-dark mb-2 rounded py-2 job-option"
+                                    data-img="image/SPA_守衛軍.png">
+                                    <strong>守衛軍 (Imperial Guard)</strong>
+                                    <br>
+                                    <span
+                                        class="small text-light">帝國聖衛軍是隊伍中最堅固的盾牌。故事背景中，他們在追尋職業源頭時，體會到與其一味舉盾追求個人的物理強盛，不如將力量用來保護盟軍，因此操控更強大的神聖力量來禦敵與輔助。</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 法師分支彈跳視窗 -->
+    <div class="modal fade" id="mageModal" tabindex="-1" aria-labelledby="mageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark text-white border border-warning">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-warning" id="mageModalLabel">法師系職業分支</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <!-- 左側：角色圖片 -->
+                        <div class="col-md-6 text-center mb-3 mb-md-0">
+                            <img src="image/SPA_法師.jpeg"
+                                class="img-fluid rounded-4 border border-2 border-warning shadow job-preview-img"
+                                alt="法師立繪" style="max-height: 350px; object-fit: cover;">
+                        </div>
+                        <!-- 右側：文字介紹與分支選項 -->
+                        <div class="col-md-6">
+                            <h4 class="fw-bold text-warning mb-2">毀滅的禁忌深淵 - 法師</h4>
+                            <p class="text-muted small mb-3">擁有強大的範圍魔法與高額爆發傷害，擅長在後方吟唱禁咒掌控戰場，是隊伍中摧毀敵軍的核心輸出。</p>
+                            <p class="text-white fw-bold mb-2">轉職分支：</p>
+                            <div class="list-group bg-transparent">
+                                <a href="#"
+                                    class="list-group-item list-group-item-action bg-secondary text-white border-dark mb-2 rounded py-2 job-option"
+                                    data-img="image/SPA_首席魔法師.png">
+                                    <strong>首席魔法師 (Arch Mage)</strong>
+                                    <br>
+                                    <span
+                                        class="small text-light">在咒術士的基礎上，將各屬性的魔法傷害全面昇華。他不僅擁有更華麗、大範圍的夢幻魔法，還具備了反制「魔法無效／魔法反射」的特殊手段，是戰場與副本中不可或缺的頂級法術輸出者。</span>
+                                </a>
+                                <a href="#"
+                                    class="list-group-item list-group-item-action bg-secondary text-white border-dark mb-2 rounded py-2 job-option"
+                                    data-img="image/SPA_元素魔法師.png">
+                                    <strong>元素魔法師 (Elemental Master)</strong>
+                                    <br>
+                                    <span class="small text-light">擅長操控自然界多種元素，擁有強大的屬性魔法與多段攻擊能力。</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弓箭手分支彈跳視窗 -->
+    <div class="modal fade" id="archerModal" tabindex="-1" aria-labelledby="archerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark text-white border border-warning">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-warning" id="archerModalLabel">弓箭手系職業分支</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <!-- 左側：角色圖片 -->
+                        <div class="col-md-6 text-center mb-3 mb-md-0">
+                            <img src="image/SPA_弓箭手.jpeg"
+                                class="img-fluid rounded-4 border border-2 border-warning shadow job-preview-img"
+                                alt="弓箭手立繪" style="max-height: 350px; object-fit: cover;">
+                        </div>
+                        <!-- 右側：文字介紹與分支選項 -->
+                        <div class="col-md-6">
+                            <h4 class="fw-bold text-warning mb-2">索命的無光影域 - 弓箭手</h4>
+                            <p class="text-muted small mb-3">擁有極遠的射程與敏捷的移動能力，擅長在暗處精準打擊敵方要害，是隊伍中點殺目標的致命獵手。</p>
+                            <p class="text-white fw-bold mb-2">轉職分支：</p>
+                            <div class="list-group bg-transparent">
+                                <a href="#"
+                                    class="list-group-item list-group-item-action bg-secondary text-white border-dark mb-2 rounded py-2 job-option"
+                                    data-img="image/SPA_風鷹狩獵者.png">
+                                    <strong>風鷹狩獵者 (Wind Hawk)</strong>
+                                    <br>
+                                    <span
+                                        class="small text-light">該職業主要以「物攻」和「靈巧（DEX）」屬性來強化技能加成，並在傳統遊俠的「銳利射擊」基礎上，增加了強大的四轉範圍風屬性物理技能「毀滅風暴」與單體高傷害技能「漸進狙擊」。</span>
+                                </a>
+                                <a href="#"
+                                    class="list-group-item list-group-item-action bg-secondary text-white border-dark mb-2 rounded py-2 job-option"
+                                    data-img="image/SPA_遊唱樂姬.png">
+                                    <strong>遊唱樂姬 (Wanderer)</strong>
+                                    <br>
+                                    <span class="small text-light"> 頂級團隊輔助： 透過唱歌與舞蹈提供隊友強大的增益 Buff（如增加攻速, 減少詠唱, 恢復 , SP,
+                                        提升經驗值等）。</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 盜賊分支彈跳視窗 -->
+    <div class="modal fade" id="rogueModal" tabindex="-1" aria-labelledby="rogueModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark text-white border border-warning">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold text-warning" id="rogueModalLabel">盜賊系職業分支</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center">
+                        <!-- 左側：角色圖片 -->
+                        <div class="col-md-6 text-center mb-3 mb-md-0">
+                            <img src="image/SPA_盜賊.png"
+                                class="img-fluid rounded-4 border border-2 border-warning shadow job-preview-img"
+                                alt="盜賊立繪" style="max-height: 350px; object-fit: cover;">
+                        </div>
+                        <!-- 右側：文字介紹與分支選項 -->
+                        <div class="col-md-6">
+                            <h4 class="fw-bold text-warning mb-2">血色的夜幕劊子 - 盜賊</h4>
+                            <p class="text-muted small mb-3">擁有極高的爆發力與無形的潛行技巧，擅長遊走於陰影之中實施背刺與暗殺，是隊伍中出其不意的血色刃鋒。</p>
+                            <p class="text-white fw-bold mb-2">轉職分支：</p>
+                            <div class="list-group bg-transparent">
+                                <a href="#"
+                                    class="list-group-item list-group-item-action bg-secondary text-white border-dark mb-2 rounded py-2 job-option"
+                                    data-img="image/SPA_暗影俠盜.png">
+                                    <strong>暗影俠盜 (Shadow Cross)</strong>
+                                    <br>
+                                    <span
+                                        class="small text-light">專精於拳刃暴擊與高速雙刀殘影，透過獨特的疊層迴圈機制解鎖驚人的連續爆發，並擁有瞬移突襲與致命爪擊，是隊伍中純粹為了毀滅目標而生的頂級物理核心。</span>
+                                </a>
+                                <a href="#"
+                                    class="list-group-item list-group-item-action bg-secondary text-white border-dark mb-2 rounded py-2 job-option"
+                                    data-img="image/SPA_深淵追跡者.png">
+                                    <strong>深淵追跡者 (Abyss Chaser)</strong>
+                                    <br>
+                                    <span
+                                        class="small text-light">擅長多樣化的短劍搏殺、遠程弓弩與暗詠魔法，能運用複製技能（抄襲/繁殖）融合百家之長，並透過強大的負面状态（剝除影子、不幸衝擊）進行完美控場，是戰場上神出鬼沒的狠角色。</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- s08 系統介紹 -->
+    <section id="s08" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container py-4">
+            <!-- 標題帶有菱形飾條風格 -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
+                <span class="text-warning fs-4">❖</span>
+                <h2 class="fw-bold mb-0 text-white">系統介紹</h2>
+                <span class="text-warning fs-4">❖</span>
+            </div>
+            <!-- 三欄直立卡片區塊 -->
+            <div class="row justify-content-center g-4">
+                <!-- 卡片 1：轉職系統 (粉紫風格) -->
+                <div class="col-md-4 wow animate__fadeInUp">
+                    <div class="card h-100 border-0 rounded-4 text-center overflow-hidden shadow-lg position-relative d-flex flex-column justify-content-between py-4"
+                        style="background-color: #bfa3be; color: #ffffff; min-height: 560px;">
+                        <!-- 標題與內文區塊 -->
+                        <div class="px-3">
+                            <h3 class="fw-bold fs-2 mb-3">轉職系統</h3>
+                            <p class="fs-6 lh-base mb-0" style="opacity: 0.95;"> 探索多樣化的職業道路，解鎖強大覺醒技能，打造專屬於你的終極冒險者。 </p>
+                        </div>
+                        <!-- 底部圖片裝飾 -->
+                        <div class="mt-auto pt-3">
+                            <img src="image/SPA_系統＿轉職.jpeg" alt="轉職系統" class="img-fluid"
+                                style="max-height: 500px; object-fit: contain;">
+                        </div>
+                    </div>
+                </div>
+                <!-- 卡片 2：寵物/座騎系統 (鼠尾草綠風格) -->
+                <div class="col-md-4 wow animate__fadeInUp">
+                    <div class="card h-100 border-0 rounded-4 text-center overflow-hidden shadow-lg position-relative d-flex flex-column justify-content-between py-4"
+                        style="background-color: #9cb59c; color: #ffffff; min-height: 560px;">
+                        <!-- 標題與內文區塊 -->
+                        <div class="px-3">
+                            <h3 class="fw-bold fs-2 mb-3">寵物/座騎系統</h3>
+                            <p class="fs-6 lh-base mb-0" style="opacity: 0.95;"> 馴服可愛的異界萌寵與炫酷座騎，獲得專屬屬性加成與自動撿寶的冒險助手。 </p>
+                        </div>
+                        <!-- 底部圖片裝飾 -->
+                        <div class="mt-auto pt-3">
+                            <img src="image/SPA_系統_坐騎.jpeg" alt="寵物與座騎" class="img-fluid"
+                                style="max-height: 500px; object-fit: contain;">
+                        </div>
+                    </div>
+                </div>
+                <!-- 卡片 3：冒險硬幣商城 (柔藍風格) -->
+                <div class="col-md-4 wow animate__fadeInUp">
+                    <div class="card h-100 border-0 rounded-4 text-center overflow-hidden shadow-lg position-relative d-flex flex-column justify-content-between py-4"
+                        style="background-color: #7b99b9; color: #ffffff; min-height: 560px;">
+                        <!-- 標題與內文區塊 -->
+                        <div class="px-3">
+                            <h3 class="fw-bold fs-2 mb-3">冒險硬幣商城</h3>
+                            <p class="fs-6 lh-base mb-0" style="opacity: 0.95;"> 完成每日任務與副本挑戰累積硬幣，兌換限量時裝、稀有稱號與強化材料。 </p>
+                        </div>
+                        <!-- 底部圖片裝飾 -->
+                        <div class="mt-auto pt-3">
+                            <img src="image/SPA_系統_冒險硬幣商城.jpeg" alt="冒險硬幣商城" class="img-fluid"
+                                style="max-height: 500px; object-fit: contain;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s09 世界觀與世界地圖 -->
+    <section id="s09" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container py-4">
+            <!-- 標題 -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
+                <i class="fa-brands fa-xing fa-2x text-warning"></i>
+                <h2 class="fw-bold mb-0 text-white">世界觀與探索地圖</h2>
+                <i class="fa-brands fa-xing fa-rotate-180 fa-2x text-warning"></i>
+            </div>
+            <div class="row g-4 align-items-center">
+                <!-- 左側：地圖區域切換選單 -->
+                <div class="col-lg-4 wow animate__fadeInLeft">
+                    <div class="list-group custom-map-menu shadow-lg">
+                        <button type="button"
+                            class="list-group-item list-group-item-action bg-dark text-white border-secondary p-3 mb-2 rounded-3 active"
+                            data-map-title="阿斯特拉主城 (Astra Central)"
+                            data-map-desc="異界冒險者們的起點與繁華要盛之地。這裡聚集了冒險者公會總部、裝備鍛造廠與最大的交易市場，受神聖結界保護，是抵抗深淵入侵的最前線堡壘。"
+                            data-map-img="image/SPA_阿斯特拉主城.jpeg">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="fw-bold fs-5"><i
+                                        class="fa-solid fa-city text-warning me-2"></i>阿斯特拉主城</span>
+                                <span class="badge bg-warning text-dark">核心安全區</span>
+                            </div>
+                        </button>
+                        <button type="button"
+                            class="list-group-item list-group-item-action bg-dark text-white border-secondary p-3 mb-2 rounded-3"
+                            data-map-title="迷霧荒野 (Mist Wasteland)"
+                            data-map-desc="被古老魔法詛咒的終年迷霧之地，棲息著大量變異的魔物與未知幻獸。只有經驗豐富的冒險者隊伍才敢深入探索這片迷失廢墟。"
+                            data-map-img="image/SPA_迷霧荒野.jpeg">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="fw-bold fs-5"><i class="fa-solid fa-tree text-warning me-2"></i>迷霧荒野</span>
+                                <span class="badge bg-danger">危險狩獵區</span>
+                            </div>
+                        </button>
+                        <button type="button"
+                            class="list-group-item list-group-item-action bg-dark text-white border-secondary p-3 mb-2 rounded-3"
+                            data-map-title="深淵地底祭壇 (Abyss Altar)"
+                            data-map-desc="黑暗戰爭時期封印深淵主宰的古老遺跡。地底流淌著純度極高的元素能量，是高階職業進行四轉覺醒突破的終極試煉之地。"
+                            data-map-img="image/SPA_深淵地底祭壇.jpeg">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="fw-bold fs-5"><i
+                                        class="fa-solid fa-dungeon text-warning me-2"></i>深淵地底祭壇</span>
+                                <span class="badge bg-purple text-white" style="background-color: #6f42c1;">團本副本區</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <!-- 右側：地圖詳情與縮圖展示 -->
+                <div class="col-lg-8 wow animate__fadeInRight">
+                    <div class="card bg-dark border-warning rounded-4 overflow-hidden shadow-lg p-3">
+                        <div class="position-relative overflow-hidden rounded-3 mb-3" style="height: 380px;">
+                            <img id="mapPreviewImg" src="image/SPA_阿斯特拉主城.jpeg"
+                                class="w-100 h-100 object-fit-cover map-img-fade" alt="地圖場景縮圖">
+                        </div>
+                        <div class="card-body p-2">
+                            <h3 id="mapTitle" class="fw-bold text-warning mb-3">阿斯特拉主城 (Astra Central)</h3>
+                            <p id="mapDesc" class="text-light lh-lg mb-0">
+                                異界冒險者們的起點與繁華要盛之地。這裡聚集了冒險者公會總部、裝備鍛造廠與最大的交易市場，受神聖結界保護，是抵抗深淵入侵的最前線堡壘。 </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s10 新手入門指南／FAQ 常見問題 -->
+    <section id="s10" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container py-4">
+            <!-- 標題 -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
+                <i class="fa-brands fa-xing fa-2x text-warning"></i>
+                <h2 class="fw-bold mb-0 text-white">新手入門指南與常見問題 (FAQ)</h2>
+                <i class="fa-brands fa-xing fa-rotate-180 fa-2x text-warning"></i>
+            </div>
+            <p class="text-light text-center mt-3 mb-4 wow animate__fadeInUp">從帳號安全、遊戲效能到儲值與活動獎勵，快速找到冒險途中常見問題的解答。</p>
+            <!-- 手風琴選單容器 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="accordion custom-accordion" id="faqAccordion">
+                        <!-- Q1：帳號怎麼綁定？ -->
+                        <div class="accordion-item bg-dark text-white border-secondary mb-3 rounded-3 overflow-hidden">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button bg-dark text-white fw-bold shadow-none collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                    aria-expanded="false" aria-controls="collapseOne"> <span
+                                        class="text-warning me-3">Q1.</span> 遊戲帳號該怎麼進行綁定與安全性設定？ </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-light small lh-lg bg-dark border-top border-secondary">
+                                    為確保您的遊戲資產安全，建議您在完成註冊後至<strong>「異界通行證」</strong>專區進行信箱與手機雙重驗證。若您使用訪客帳號遊玩，請於遊戲設定選單中的「帳號管理」綁定官方通行證，避免更換裝置時發生資料遺失的情況。
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Q2：配備跑不動怎麼辦？ -->
+                        <div class="accordion-item bg-dark text-white border-secondary mb-3 rounded-3 overflow-hidden">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button bg-dark text-white fw-bold shadow-none collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo"> <span
+                                        class="text-warning me-3">Q2.</span> 進入遊戲後如果遇到畫面卡頓或配備跑不動怎麼辦？ </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-light small lh-lg bg-dark border-top border-secondary">
+                                    若您的電腦硬體較接近最低配備，建議您在遊戲內的<strong>「畫面設定」</strong>中將特效品質調整為「流暢」或「中等」，並關閉垂直同步與反鋸齒選項。同時，請確認顯示卡驅動程式已更新至最新版本，並將遊戲安裝於
+                                    SSD 固態硬碟以獲得最佳讀取效能。 </div>
+                            </div>
+                        </div>
+                        <!-- Q3：儲值與點數問題 -->
+                        <div class="accordion-item bg-dark text-white border-secondary mb-3 rounded-3 overflow-hidden">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button bg-dark text-white fw-bold shadow-none collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                    aria-expanded="false" aria-controls="collapseThree"> <span
+                                        class="text-warning me-3">Q3.</span> 進行遊戲儲值或購買點數後未入帳該如何處理？ </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-light small lh-lg bg-dark border-top border-secondary">
+                                    若您透過官網或各大應用程式商店進行儲值後發生點數延遲入帳，請先嘗試重新登入遊戲。若 15 分鐘後仍未顯示，請至<strong>「公會服務處 >
+                                        客服中心」</strong>提交回報單，並附上您的<strong>遊戲帳號、伺服器名稱、角色名稱以及交易明細／訂單截圖</strong>，客服人員將會盡速為您核對處理。
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Q4：如何領取事前登錄獎勵 -->
+                        <div class="accordion-item bg-dark text-white border-secondary mb-3 rounded-3 overflow-hidden">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button bg-dark text-white fw-bold shadow-none collapsed"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                    aria-expanded="false" aria-controls="collapseFour"> <span
+                                        class="text-warning me-3">Q4.</span> 預先註冊與開服同慶的稀有萌寵獎勵該怎麼領取？ </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-light small lh-lg bg-dark border-top border-secondary">
+                                    完成預先註冊的玩家，系統會在您創角後的 24
+                                    小時內，透過遊戲內的<strong>「信箱系統」</strong>發送序號或直配獎勵道具。請點擊遊戲主介面右上角的信箱圖示進行領取。每組帳號僅限領取一次。 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s11 遊戲下載與配備需求 -->
+    <section id="s11" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container py-4">
+            <!-- 標題 -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
+                <i class="fa-brands fa-xing fa-2x text-warning"></i>
+                <h2 class="fw-bold mb-0 text-white">遊戲下載與配備需求</h2>
+                <i class="fa-brands fa-xing fa-rotate-180 fa-2x text-warning"></i>
+            </div>
+            <p class="text-light text-center mt-3 mb-0">選擇適合的平台，確認裝置需求，立即加入阿斯特拉的冒險行列。</p>
+            <!-- 醒目 CTA：全平台下載按鈕區 -->
+            <div class="row justify-content-center mb-5 wow animate__fadeInUp">
+                <div class="col-lg-10 text-center">
+                    <p class="text-muted mb-4">PC 玩家可先確認下方最低與建議配備；行動裝置請選擇對應平台版本。</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-4">
+                        <!-- PC 專用主程式下載 -->
+                        <a href="#"
+                            class="btn btn-warning btn-lg px-4 py-3 fw-bold d-flex align-items-center gap-3 shadow-lg rounded-pill download-cta-btn">
+                            <i class="fa-solid fa-desktop fa-2x"></i>
+                            <div class="text-start">
+                                <div class="small text-dark opacity-75" style="font-size: 0.75rem;">PC CLIENT</div>
+                                <div class="fs-5">Windows 主程式下載</div>
+                            </div>
+                        </a>
+                        <!-- App Store 下載 -->
+                        <a href="#"
+                            class="btn btn-dark border border-warning btn-lg px-4 py-3 fw-bold d-flex align-items-center gap-3 shadow-lg rounded-pill download-cta-btn text-white">
+                            <i class="fa-brands fa-app-store-ios fa-2x text-warning"></i>
+                            <div class="text-start">
+                                <div class="small text-muted" style="font-size: 0.75rem;">APP STORE</div>
+                                <div class="fs-5">iOS 版本下載</div>
+                            </div>
+                        </a>
+                        <!-- Google Play 下載 -->
+                        <a href="#"
+                            class="btn btn-dark border border-warning btn-lg px-4 py-3 fw-bold d-flex align-items-center gap-3 shadow-lg rounded-pill download-cta-btn text-white">
+                            <i class="fa-brands fa-google-play fa-2x text-warning"></i>
+                            <div class="text-start">
+                                <div class="small text-muted" style="font-size: 0.75rem;">GOOGLE PLAY</div>
+                                <div class="fs-5">Android 版本下載</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 雙欄式電腦配備需求表格 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h4 class="fw-bold text-warning mb-3 text-center text-md-start"> <i
+                            class="fa-solid fa-microchip me-2"></i>PC 端系統硬體需求對照表 </h4>
+                    <div class="table-responsive">
+                        <table
+                            class="table table-dark table-bordered table-striped align-middle border-secondary text-center text-md-start">
+                            <thead>
+                                <tr class="text-warning text-center">
+                                    <th scope="col" style="width: 20%;">硬體項目</th>
+                                    <th scope="col" style="width: 40%;">最低配備 (Minimum)</th>
+                                    <th scope="col" style="width: 40%;">建議配備 (Recommended)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="text-center text-light">作業系統</th>
+                                    <td>Windows 10 64-bit</td>
+                                    <td>Windows 10 / 11 64-bit</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center text-light">處理器 (CPU)</th>
+                                    <td>Intel Core i5-6400 或 AMD FX-8320</td>
+                                    <td>Intel Core i7-8700 或 AMD Ryzen 5 3600</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center text-light">記憶體 (RAM)</th>
+                                    <td>8 GB RAM</td>
+                                    <td>16 GB RAM 以上</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center text-light">顯示卡 (GPU)</th>
+                                    <td>NVIDIA GeForce GTX 960 / AMD Radeon R9 380</td>
+                                    <td>NVIDIA GeForce GTX 1060 / AMD Radeon RX 580</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center text-light">DirectX 版本</th>
+                                    <td colspan="2" class="text-center">DirectX 11</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center text-light">儲存空間</th>
+                                    <td colspan="2" class="text-center">可用磁碟空間 50 GB 以上（建議安裝於 SSD 固態硬碟）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s12 精彩影音與媒體園地 -->
+    <section id="s12" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container py-4">
+            <!-- 標題 -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
+                <i class="fa-brands fa-xing fa-2x text-warning"></i>
+                <h2 class="fw-bold mb-0 text-white">精彩影音與媒體園地</h2>
+                <i class="fa-brands fa-xing fa-rotate-180 fa-2x text-warning"></i>
+            </div>
+            <!-- 子標題：官方宣傳與實機影片 -->
+            <h4 class="fw-bold text-warning mb-4"><i class="fa-solid fa-photo-film me-2"></i>官方宣傳與實機影音</h4>
+            <div class="row g-4 mb-5">
+                <!-- 影片 1：CG 宣傳片 -->
+                <div class="col-md-6 wow animate__fadeInUp">
+                    <div class="card bg-dark border-secondary rounded-4 overflow-hidden shadow-lg h-100 media-card"
+                        data-bs-toggle="modal" data-bs-target="#videoModal"
+                        data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
+                        <div class="position-relative">
+                            <img src="image/SPA_遊戲背景.jpeg" class="card-img-top" alt="CG 宣傳影片"
+                                style="height: 280px; object-fit: cover;">
+                            <div
+                                class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center play-overlay">
+                                <div class="rounded-circle bg-warning bg-opacity-75 d-flex justify-content-center align-items-center"
+                                    style="width: 70px; height: 70px;">
+                                    <i class="fa-solid fa-play text-dark fa-2x ms-1"></i>
+                                </div>
+                            </div>
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-3 px-3 py-2">CG 宣傳片</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-white mb-2">《異界冒險》世界觀首部曲 CG 預告片</h5>
+                            <p class="card-text text-muted small mb-0">探索阿斯特拉裂隙的源頭，見證四大職業始祖的命運交織。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 影片 2：實機演示 -->
+                <div class="col-md-6 wow animate__fadeInUp">
+                    <div class="card bg-dark border-secondary rounded-4 overflow-hidden shadow-lg h-100 media-card"
+                        data-bs-toggle="modal" data-bs-target="#videoModal"
+                        data-video-url="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
+                        <div class="position-relative">
+                            <img src="image/SPA_四轉覺醒職業戰鬥實機與副本展示.jpeg" class="card-img-top" alt="實機演示影片"
+                                style="height: 280px; object-fit: cover; object-position: center 25%;">
+                            <div
+                                class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center play-overlay">
+                                <div class="rounded-circle bg-warning bg-opacity-75 d-flex justify-content-center align-items-center"
+                                    style="width: 70px; height: 70px;">
+                                    <i class="fa-solid fa-play text-dark fa-2x ms-1"></i>
+                                </div>
+                            </div>
+                            <span class="badge bg-primary position-absolute top-0 start-0 m-3 px-3 py-2">實機演示</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-white mb-2">四轉覺醒職業戰鬥實機與副本展示</h5>
+                            <p class="card-text text-muted small mb-0">公開全新轉職分支技能特效、深淵副本挑戰與流暢連段操作畫面。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 子標題：精美原畫與桌布下載 -->
+            <h4 class="fw-bold text-warning mb-4"><i class="fa-solid fa-image me-2"></i>精美原畫與桌布下載</h4>
+            <div class="row g-4">
+                <!-- 原畫 1 -->
+                <div class="col-6 col-md-3 wow animate__zoomIn">
+                    <div class="card bg-dark border-secondary rounded-4 overflow-hidden shadow-sm h-100 gallery-card">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/SPA_劍士.png" class="w-100 h-100 object-fit-cover gallery-img" alt="劍士原畫">
+                            <div
+                                class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center gap-2">
+                                <a href="image/SPA_劍士.png" target="_blank"
+                                    class="btn btn-warning btn-sm fw-bold rounded-pill px-3">查看原圖</a>
+                                <a href="image/SPA_劍士.png" download
+                                    class="btn btn-outline-light btn-sm fw-bold rounded-pill px-3">下載桌布</a>
+                            </div>
+                        </div>
+                        <div class="card-body p-3 text-center">
+                            <h6 class="fw-bold text-white mb-1">近戰防線 - 劍士立繪</h6>
+                            <span class="text-muted" style="font-size: 0.8rem;">1920 x 1080</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 原畫 2 -->
+                <div class="col-6 col-md-3 wow animate__zoomIn">
+                    <div class="card bg-dark border-secondary rounded-4 overflow-hidden shadow-sm h-100 gallery-card">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/SPA_法師.jpeg" class="w-100 h-100 object-fit-cover gallery-img" alt="法師原畫">
+                            <div
+                                class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center gap-2">
+                                <a href="image/SPA_法師.jpeg" target="_blank"
+                                    class="btn btn-warning btn-sm fw-bold rounded-pill px-3">查看原圖</a>
+                                <a href="image/SPA_法師.jpeg" download
+                                    class="btn btn-outline-light btn-sm fw-bold rounded-pill px-3">下載桌布</a>
+                            </div>
+                        </div>
+                        <div class="card-body p-3 text-center">
+                            <h6 class="fw-bold text-white mb-1">禁忌深淵 - 法師立繪</h6>
+                            <span class="text-muted" style="font-size: 0.8rem;">1920 x 1080</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 原畫 3 -->
+                <div class="col-6 col-md-3 wow animate__zoomIn">
+                    <div class="card bg-dark border-secondary rounded-4 overflow-hidden shadow-sm h-100 gallery-card">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/SPA_弓箭手.jpeg" class="w-100 h-100 object-fit-cover gallery-img" alt="弓箭手原畫">
+                            <div
+                                class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center gap-2">
+                                <a href="image/SPA_弓箭手.jpeg" target="_blank"
+                                    class="btn btn-warning btn-sm fw-bold rounded-pill px-3">查看原圖</a>
+                                <a href="image/SPA_弓箭手.jpeg" download
+                                    class="btn btn-outline-light btn-sm fw-bold rounded-pill px-3">下載桌布</a>
+                            </div>
+                        </div>
+                        <div class="card-body p-3 text-center">
+                            <h6 class="fw-bold text-white mb-1">無光影域 - 弓箭手立繪</h6>
+                            <span class="text-muted" style="font-size: 0.8rem;">1920 x 1080</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 原畫 4 -->
+                <div class="col-6 col-md-3 wow animate__zoomIn">
+                    <div class="card bg-dark border-secondary rounded-4 overflow-hidden shadow-sm h-100 gallery-card">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            <img src="image/SPA_盜賊.png" class="w-100 h-100 object-fit-cover gallery-img" alt="盜賊原畫">
+                            <div
+                                class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 d-flex justify-content-center align-items-center gap-2">
+                                <a href="image/SPA_盜賊.png" target="_blank"
+                                    class="btn btn-warning btn-sm fw-bold rounded-pill px-3">查看原圖</a>
+                                <a href="image/SPA_盜賊.png" download
+                                    class="btn btn-outline-light btn-sm fw-bold rounded-pill px-3">下載桌布</a>
+                            </div>
+                        </div>
+                        <div class="card-body p-3 text-center">
+                            <h6 class="fw-bold text-white mb-1">夜幕劊子 - 盜賊立繪</h6>
+                            <span class="text-muted" style="font-size: 0.8rem;">1920 x 1080</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 影片播放器彈跳視窗 (Modal) -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-dark border border-warning">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-warning fw-bold" id="videoModalLabel">官方影音播放</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="videoIframe" src="" title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- s13 冒險者大廳／玩家評價 -->
+    <section id="s13" class="py-5" style="background-color: #1a1a2e; color: white;">
+        <div class="container py-4">
+            <!-- 標題 -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-5">
+                <i class="fa-brands fa-xing fa-2x text-warning"></i>
+                <h2 class="fw-bold mb-0 text-white">冒險者大廳與權威評價</h2>
+                <i class="fa-brands fa-xing fa-rotate-180 fa-2x text-warning"></i>
+            </div>
+            <!-- 上半部：權威媒體評分與量化數據展示 -->
+            <div class="row g-4 mb-5">
+                <!-- 媒體 1：IGN 評分 -->
+                <div class="col-md-4 wow animate__fadeInUp">
+                    <div
+                        class="card bg-dark border-secondary rounded-4 p-4 h-100 text-center shadow-lg review-badge-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <h3 class="fw-bold text-white mb-2">
+                            <span class="counter-item" data-target="9.2" data-decimal="true">0</span>
+                            <span class="fs-4">/ 10</span>
+                        </h3>
+                        <h5 class="text-warning fw-bold mb-3">IGN 權威評測</h5>
+                        <p class="text-muted small mb-0">「驚人的四轉職業分支、流暢的打擊手感與美術風格，為近年來不可多得的史詩級 MMORPG 傑作。」</p>
+                    </div>
+                </div>
+                <!-- 媒體 2：封測同上玩家 -->
+                <div class="col-md-4 wow animate__fadeInUp">
+                    <div
+                        class="card bg-dark border-secondary rounded-4 p-4 h-100 text-center shadow-lg review-badge-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h3 class="fw-bold text-white mb-2">
+                            <span class="counter-item" data-target="100000" data-comma="true">0</span>
+                            <span class="text-warning">+</span>
+                        </h3>
+                        <h5 class="text-warning fw-bold mb-3">封測同上玩家</h5>
+                        <p class="text-muted small mb-0">「封測期間突破十萬玩家同時在線！豐富的萌寵與副本挑戰，讓老玩家與新手都愛不釋手。」</p>
+                    </div>
+                </div>
+                <!-- 媒體 3：滿分好評率 -->
+                <div class="col-md-4 wow animate__fadeInUp">
+                    <div
+                        class="card bg-dark border-secondary rounded-4 p-4 h-100 text-center shadow-lg review-badge-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fa-solid fa-face-smile-beam"></i>
+                        </div>
+                        <h3 class="fw-bold text-white mb-2">
+                            <span class="counter-item" data-target="98">0</span>
+                            <span class="text-warning">%</span>
+                        </h3>
+                        <h5 class="text-warning fw-bold mb-3">玩家滿意好評</h5>
+                        <p class="text-muted small mb-0">「跨平台遊玩體驗極佳，無論是手機端還是 PC 端的介面優化都堪稱業界標竿。」</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 下半部：玩家真實好評輪播 (Carousel) -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="p-4 bg-dark rounded-4 border border-secondary shadow-lg">
+                        <h4 class="fw-bold text-warning text-center mb-4"> <i
+                                class="fa-solid fa-comments me-2"></i>冒險者真實心聲 </h4>
+                        <!-- Bootstrap Carousel 輪播 -->
+                        <div id="playerReviewCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner text-center py-3">
+                                <!-- 評論 1 -->
+                                <div class="carousel-item active">
+                                    <p class="fs-5 text-light fst-italic mb-3">「身為劍士老玩家，這次的龍騎士轉職分支真的太帥了！打擊感跟技能特效完全超出期待！」
+                                    </p>
+                                    <h6 class="fw-bold text-warning mb-0">-- 伺服器：阿斯特拉 01 / 冒險者「Alick」</h6>
+                                </div>
+                                <!-- 評論 2 -->
+                                <div class="carousel-item">
+                                    <p class="fs-5 text-light fst-italic mb-3">「寵物系統跟座騎真的有夠可愛，而且每日任務硬幣可以換到稀有時裝，佛心手遊推推！」
+                                    </p>
+                                    <h6 class="fw-bold text-warning mb-0">-- 伺服器：時空裂隙 03 / 冒險者「喵星人小隊」</h6>
+                                </div>
+                                <!-- 評論 3 -->
+                                <div class="carousel-item">
+                                    <p class="fs-5 text-light fst-italic mb-3">「畫面優美、音樂好聽，跟公會夥伴一起打深淵副本非常有當年的感動，大推首席魔法師！」
+                                    </p>
+                                    <h6 class="fw-bold text-warning mb-0">-- 伺服器：永恆印記 02 / 冒險者「星辰幻影」</h6>
+                                </div>
+                            </div>
+                            <!-- 輪播左右控制鈕 -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#playerReviewCarousel"
+                                data-bs-slide="prev" style="width: 5%;">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#playerReviewCarousel"
+                                data-bs-slide="next" style="width: 5%;">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s14 公會服務處（聯絡我 CONTACT ME） -->
+    <section id="s14">
+        <div class="container py-4">
+            <div class="h1 text-center">
+                <h1 class="fw-bold mb-2">公會服務處 CONTACT</h1>
+                <p class="text-muted mb-4">遇到冒險難題或帳號問題嗎？公會服務團隊將協助你找到解決方向。</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 wow animate__fadeInUp">
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control form-control-lg" id="contactName" name="name"
+                            placeholder=" " autocomplete="name" required>
+                        <label for="contactName">姓名</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="email" class="form-control form-control-lg" id="contactEmail" name="email"
+                            placeholder=" " autocomplete="email" required>
+                        <label for="contactEmail">電子信箱</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="tel" class="form-control form-control-lg" id="contactPhone" name="phone"
+                            placeholder=" " autocomplete="tel">
+                        <label for="contactPhone">聯絡電話</label>
+                    </div>
+                    <select name="" id="" class="form-select form-select-lg"
+                        style="text-align: center; text-align-last: center;">
+                        <option value="" class="text-center" disabled selected>---聯絡主題---</option>
+                        <option value="帳號問題">帳號問題</option>
+                        <option value="遊戲道具問題">遊戲道具問題</option>
+                        <option value="遊戲序號問題">遊戲序號問題</option>
+                        <option value="檢舉外掛">檢舉外掛</option>
+                        <option value="其他">其他</option>
+                    </select>
+                    <textarea name="" id="" class="form-control my-3" cols="10" rows="8"
+                        placeholder="請輸入訊息內容..."></textarea>
+                    <div class="text-end my-3">
+                        <button class="btn btn-secondary">取消</button>
+                        <button class="btn btn-primary">送出</button>
+                    </div>
+                </div>
+                <div class="col-md-6 wow animate__fadeInUp">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5711.746603490658!2d120.61415730673802!3d24.172292920133017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1793674164635!5m2!1szh-TW!2stw"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- s15 -- Footer -->
+    <section id="s15" class="bg-secondary py-2">
+        <div class="container">
+            <!-- 第一行導覽列置中 -->
+            <ul class="nav justify-content-center mb-2">
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="#">網站使用條款</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="#">隱私權聲明</a>
+                </li>
+            </ul>
+            <!-- 第二行版權宣告（直接置中，不再受 ul 影響） -->
+            <div class="text-center text-white"> CopyRight 2026 POWERED BY Alick </div>
+        </div>
+    </section>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+        // WOW.js + Animate.css：依瀏覽動線播放淡入與上移，不讓動畫遮住內容。
+        (function () {
+            function initAstraPage() {
+                if (window.WOW) {
+                    new WOW({
+                        boxClass: "wow",
+                        animateClass: "animate__animated",
+                        offset: 80,
+                        mobile: true,
+                        live: true
+                    }).init();
+                }
+
+                // 職業分支：切換目前 Modal 的預覽圖片與選取狀態。
+                document.addEventListener("click", function (event) {
+                    // 確保點擊目標是 HTML 元素
+                    const target = event.target;
+                    if (!(target instanceof Element)) return;
+
+                    // 找到被點選的職業分支
+                    const option = target.closest(".job-option");
+                    if (!option) return;
+
+                    event.preventDefault();
+
+                    // 取得目前所屬的職業 Modal
+                    const modal = option.closest(".modal");
+                    if (!modal) return;
+
+                    // 取得該 Modal 專屬的預覽圖片
+                    const preview = modal.querySelector(".job-preview-img");
+                    const newImg = option.getAttribute("data-img");
+
+                    if (!preview || !newImg) return;
+
+                    // 更新圖片
+                    preview.setAttribute("src", newImg);
+
+                    // 更新圖片替代文字
+                    const title = option.querySelector("strong");
+                    if (title) {
+                        preview.setAttribute("alt", title.textContent.trim() + "職業立繪");
+                    }
+
+                    // 清除同一個 Modal 內其他分支的選取狀態
+                    modal.querySelectorAll(".job-option").forEach(function (item) {
+                        item.classList.remove("active", "bg-warning", "text-dark");
+                        item.classList.add("bg-secondary", "text-white");
+                    });
+
+                    // 設定目前選取的分支
+                    option.classList.add("active", "bg-warning", "text-dark");
+                    option.classList.remove("bg-secondary", "text-white");
+                });
+
+                // 世界地圖：點選左側地點後更新圖片、標題與說明。
+                const mapMenu = document.querySelector(".custom-map-menu");
+                const mapImg = document.querySelector("#mapPreviewImg");
+                const mapTitle = document.querySelector("#mapTitle");
+                const mapDesc = document.querySelector("#mapDesc");
+
+                if (mapMenu && mapImg && mapTitle && mapDesc) {
+                    mapMenu.addEventListener("click", function (event) {
+                        const button = event.target.closest("button.list-group-item");
+                        if (!button || !mapMenu.contains(button)) return;
+
+                        mapMenu.querySelectorAll("button.list-group-item").forEach(function (item) {
+                            item.classList.remove("active");
+                        });
+                        button.classList.add("active");
+
+                        const newImg = button.getAttribute("data-map-img");
+                        const newTitle = button.getAttribute("data-map-title");
+                        const newDesc = button.getAttribute("data-map-desc");
+
+                        mapImg.classList.add("hide");
+                        window.setTimeout(function () {
+                            if (newImg) mapImg.src = newImg;
+                            if (newTitle) mapTitle.textContent = newTitle;
+                            if (newDesc) mapDesc.textContent = newDesc;
+                            mapImg.alt = newTitle || "地圖場景縮圖";
+                            mapImg.classList.remove("hide");
+                        }, 220);
+                    });
+                }
+
+                // 影音卡片：點擊後將卡片上的 YouTube embed URL 帶入 Modal。
+                const videoIframe = document.querySelector("#videoIframe");
+                document.querySelectorAll(".media-card").forEach(function (card) {
+                    card.setAttribute("role", "button");
+                    card.setAttribute("tabindex", "0");
+
+                    function openVideo() {
+                        const videoUrl = card.getAttribute("data-video-url");
+                        if (videoIframe && videoUrl) videoIframe.src = videoUrl;
+                    }
+                    card.addEventListener("click", openVideo);
+                    card.addEventListener("keydown", function (event) {
+                        if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            openVideo();
+                            const modalEl = document.querySelector(card.getAttribute("data-bs-target") || "#videoModal");
+                            if (modalEl && window.bootstrap && window.bootstrap.Modal) {
+                                window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+                            }
+                        }
+                    });
+                });
+
+                const videoModal = document.querySelector("#videoModal");
+                if (videoModal && videoIframe) {
+                    videoModal.addEventListener("hidden.bs.modal", function () {
+                        videoIframe.src = "";
+                    });
+                }
+
+                // 時間軸卡片：保留原本點選與捲動高亮效果。
+                document.querySelectorAll(".timeline-content").forEach(function (content) {
+                    content.addEventListener("click", function () {
+                        document.querySelectorAll(".timeline-item").forEach(function (item) {
+                            item.classList.remove("active");
+                        });
+                        const parent = content.closest(".timeline-item");
+                        if (parent) parent.classList.add("active");
+                    });
+                });
+
+                let timelineTicking = false;
+                window.addEventListener("scroll", function () {
+                    if (timelineTicking) return;
+                    timelineTicking = true;
+                    window.requestAnimationFrame(function () {
+                        const scrollPos = window.scrollY + window.innerHeight / 2;
+                        document.querySelectorAll(".timeline-item").forEach(function (item) {
+                            const rect = item.getBoundingClientRect();
+                            const top = rect.top + window.scrollY;
+                            const bottom = top + item.offsetHeight;
+                            if (scrollPos >= top && scrollPos <= bottom) {
+                                document.querySelectorAll(".timeline-item").forEach(function (node) {
+                                    node.classList.remove("active");
+                                });
+                                item.classList.add("active");
+                            }
+                        });
+                        timelineTicking = false;
+                    });
+                }, { passive: true });
+
+                // S13 數字：逐一觀察數字本身，不依賴整個高 Section 的可見比例。
+                function animateCounter(counter) {
+                    if (counter.dataset.counted === "true") return;
+                    const target = Number.parseFloat(counter.getAttribute("data-target"));
+                    if (!Number.isFinite(target)) return;
+
+                    counter.dataset.counted = "true";
+                    const isDecimal = counter.getAttribute("data-decimal") === "true";
+                    const hasComma = counter.getAttribute("data-comma") === "true";
+                    const duration = 1500;
+                    let startTime = null;
+
+                    function render(now) {
+                        if (startTime === null) startTime = now;
+                        const progress = Math.min((now - startTime) / duration, 1);
+                        const current = target * progress;
+
+                        if (isDecimal) {
+                            counter.textContent = (progress === 1 ? target : current).toFixed(1);
+                        } else if (hasComma) {
+                            counter.textContent = Math.floor(progress === 1 ? target : current).toLocaleString("en-US");
+                        } else {
+                            counter.textContent = Math.floor(progress === 1 ? target : current).toString();
+                        }
+
+                        if (progress < 1) {
+                            window.requestAnimationFrame(render);
+                        }
+                    }
+                    window.requestAnimationFrame(render);
+                }
+
+                const counters = document.querySelectorAll("#s13 .counter-item");
+                if ("IntersectionObserver" in window) {
+                    const counterObserver = new IntersectionObserver(function (entries, observer) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                animateCounter(entry.target);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, {
+                        root: null,
+                        threshold: 0.1,
+                        rootMargin: "0px 0px -5% 0px"
+                    });
+                    counters.forEach(function (counter) {
+                        counterObserver.observe(counter);
+                    });
+                } else {
+                    counters.forEach(animateCounter);
+                }
+            }
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initAstraPage);
+            } else {
+                initAstraPage();
+            }
+        })();
+    </script>
+
+    <script>
+        // 開場 Loading：固定約 2 秒後淡出，不影響原有頁面功能。
+        // 開場 Loading：進度完成後淡出，再播放首頁主標語動畫。
+        (function () {
+            const screen = document.getElementById("astra-loading-screen");
+            const progressBar = document.getElementById("astra-loading-progress");
+            const percentText = document.getElementById("astra-loading-percent");
+            const progressTrack = screen ? screen.querySelector('[role="progressbar"]') : null;
+            const message = document.getElementById("astra-loading-message");
+
+            if (!screen || !progressBar || !percentText) return;
+
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function updateLoading(now) {
+                const progress = Math.min((now - startTime) / duration, 1);
+                const percent = Math.round(progress * 100);
+
+                progressBar.style.width = percent + "%";
+                percentText.textContent = percent + "%";
+
+                if (progressTrack) {
+                    progressTrack.setAttribute("aria-valuenow", String(percent));
+                }
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(updateLoading);
+                } else {
+                    if (message) {
+                        message.textContent = "冒險即將開始……";
+                    }
+
+                    window.setTimeout(function () {
+                        screen.classList.add("is-hidden");
+
+                        // 等待 Loading 淡出完成，再播放首頁主標語動畫
+                        window.setTimeout(function () {
+                            screen.remove();
+
+                            const heroIntro = document.querySelector("#s02 .hero-intro");
+
+                            if (heroIntro) {
+                                heroIntro.classList.add("hero-intro-show");
+                            }
+                        }, 600);
+
+                    }, 180);
+                }
+            }
+
+            window.requestAnimationFrame(updateLoading);
+        })();
+    </script>
+
+</body>
+
+</html>

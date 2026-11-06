@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch7 flex - 時間軸</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .imgbox {
+            height: 280px;
+        }
+
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            width: 5px;
+            background-color: rgba(46, 3, 92, 0.5);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-section-pointer {
+            position: relative;
+        }
+
+        .timeline-section-pointer::before {
+            position: absolute;
+            content: "";
+            width: 28px;
+            height: 28px;
+            background-color: rgba(53, 106, 220, 0.5);
+            border-radius: 50%;
+            border: 8px solid rgba(0, 11, 35, 0.5);
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .timeline-section::before,
+            .timeline-section-pointer::before {
+                display: none;
+            }
+
+            /* 如果不隱藏的話，移到左邊 */
+            /* .timeline-section::before{
+                left:-20px;
+            }
+            .timeline-section-pointer::before{
+                left:-8px;
+            } */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="display-2 text-center fw-900 my-4">時間軸(timeline)</div>
+        <div class="timeline-section">
+            <div class="row mt-3 align-items-center timeline-section-pointer">
+                <div class="col-md-6">
+                    <div class="imgbox bg-img roller-t" style="background-image: url(image/1.avif);">
+                        <div class="rollerbox-t">
+                            <button class="btn btn-warning">查看更多</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="h2 fw-900 text-center">01 標題</div>
+                    <p>xxx: XXXXX</p>
+                    <p>xxx: XXXXX</p>
+                    <p>xxx: XXXXX</p>
+                </div>
+            </div>
+            <div class="row mt-3 flex-row-reverse align-items-center timeline-section-pointer">
+                <div class="col-md-6">
+                    <div class="imgbox bg-img roller-b" style="background-image: url(image/1.avif);">
+                        <div class="rollerbox-b">
+                            <button class="btn btn-warning">查看更多</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="h2 fw-900 text-center">02 標題</div>
+                    <p>xxx: XXXXX</p>
+                    <p>xxx: XXXXX</p>
+                    <p>xxx: XXXXX</p>
+                </div>
+            </div>
+            <div class="row mt-3 align-items-center timeline-section-pointer">
+                <div class="col-md-6">
+                    <div class="imgbox bg-img roller-l" style="background-image: url(image/1.avif);">
+                        <div class="rollerbox-l">
+                            <button class="btn btn-warning">查看更多</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="h2 fw-900 text-center">03 標題</div>
+                    <p>xxx: XXXXX</p>
+                    <p>xxx: XXXXX</p>
+                    <p>xxx: XXXXX</p>
+                </div>
+            </div>
+            <div class="row mt-3 flex-row-reverse align-items-center timeline-section-pointer">
+                <div class="col-md-6">
+                    <div class="imgbox bg-img roller-r" style="background-image: url(image/1.avif);">
+                        <div class="rollerbox-r">
+                            <button class="btn btn-warning">查看更多</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="h2 fw-900 text-center">04 標題</div>
+                    <p>xxx: XXXXX</p>
+                    <p>xxx: XXXXX</p>
+                    <p>xxx: XXXXX</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
